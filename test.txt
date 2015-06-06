@@ -1,0 +1,13 @@
+tipe user ada 2 :
+
+user1
+	username : user1
+	password : user1
+	
+	user1 memiliki privileges lebih seperti wewenang untuk memanipulasi data (bertindak sebagai admin)
+	
+user2
+	username : user2
+	password : user2
+	
+	user2 memiliki privileges layaknya guest
