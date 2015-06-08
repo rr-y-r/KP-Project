@@ -1,6 +1,6 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User1 extends CI_Controller
+class Komite_karir extends CI_Controller
 {
     public function __construct()
     {
@@ -12,13 +12,8 @@ class User1 extends CI_Controller
             redirect('login');
         }
         */
+        
         $this->load->model('komite_karir');
-    }
-    
-    public function index()
-    {  
-        $this->load->view('user1');
-
     }
     
     function insert(){
@@ -32,6 +27,7 @@ class User1 extends CI_Controller
             'message' => $message
         )); 
     }
+    
 }
     
    
