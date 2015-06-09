@@ -1,5 +1,5 @@
 <? $this->load->view('includes/header');?>
-<body style="background-color:#303030;">
+<body style="background-image:url('<?=base_url('assets/bg.jpg'); ?>')">
 
 <div style= "margin-left:35%; margin-top:150px; ">
 <div class="container-fluid" >

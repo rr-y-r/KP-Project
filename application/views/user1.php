@@ -1,6 +1,7 @@
 <? $this->load->view('includes/header');?>
-<a href="#" class="glyphicon glyphicon-th-list toogleside pull-right" id="menu-toggle"></a>
-<h3 class="text-center wuaso">##HEADEER##</h3>
+<? $this->load->view('includes/navbar');?>
+
+
 <div class="container">
     
     <div class="content" style="display:none">
@@ -11,7 +12,7 @@
 
     <!-- Sidebar -->
             <div id="sidebar-wrapper">
-                <img class="img-circle img-responsive img-brand" alt="500x500"/>
+                <img class="img-circle img-responsive img-brand" alt="500x500" src="<?=base_url('assets/1.png'); ?>"/>
                 <ul class="sidebar-nav">
 
                     <li>
@@ -26,11 +27,12 @@
             </div>
             
                 <br>
-            <h4 class="text-center headercoeg">##header##</h4>
+            <h4 class="text-center headercoeg">Komite Karir</h4>
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#komite_karir" id="komite_karir-tab" role="tab" data-toggle="tab" aria-controls="komite_karir" aria-expanded="true">komite_karir</a></li>
-                    <li role="presentation"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">##tab##</a></li>
+                  <li role="presentation" class="active"><a href="#komite_karir" id="komite_karir-tab" role="tab" data-toggle="tab" aria-controls="komite_karir" aria-expanded="true">Tambah Data Komite</a></li>
+                    <li role="presentation"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Data Komite Karir</a></li>
 
                   <!--
                     <li role="presentation" class="dropdown">
@@ -64,9 +66,21 @@
                              <label>Nama</label>
                              <input class="form-control" name="nama" type="text" placeholder="nama pegawai"/>
                         </div>
+                         <div class="form-group">
+                             <label>Kategory karir</label>
+                             <input class="form-control" name="cat_karir" type="text" placeholder="Kategory karir"/>
+                        </div>
                         <div class="form-group">
                              <label>HATS</label>
-                             <input class="form-control" name="hats" type="text" placeholder="NIK"/>
+                             <input class="form-control" name="hats" type="text" placeholder="HATS"/>
+                        </div>
+                         <div class="form-group">
+                             <label>Keterangan HATS</label>
+                             <input class="form-control" name="ket_hats" type="text" placeholder="Keterangan HATS"/>
+                        </div>
+                        <div class="form-group">
+                             <label>Hasil</label>
+                             <input class="form-control" name="hasil" type="text" placeholder="hasil"/>
                         </div>
                         <div class="form-group">
                              <label>Jalur Karir</label>
@@ -83,7 +97,7 @@
                         </div>
                         <div class="form-group">
                              <label>Rekomendasi Program Pengembangan</label>
-                             <input class="form-control" name="nik" type="text" placeholder="NIK"/>
+                             <input class="form-control" name="rekomendasi" type="text" placeholder="rekomendasi"/>
                         </div>
                         
 
@@ -94,16 +108,23 @@
               
 
                   <div role="tabpanel" class="tab-pane" id="home" aria-labelledby="home-tab">
-<h4 class="text-center">Table</h4>
-                     <table id="roomTable" class="table table-hover table-striped table-condensed"> 
+                      <a href="#" class="glyphicon glyphicon-refresh pull-right" style="font-weight:800;font-size:20px;font-face:'Montserrat',sans-serif;" onclick="return loadTable()"></a>
+                      <h4 class="text-center">Table</h4>
+                     <table id="komiteTable" class="table table-hover table-striped table-condensed"> 
                         <thead style="background-color:#FF6666;"> 
                         <tr> 
-                            <th>Table</th> 
-                            <th>Table</th> 
-                            <th>Table</th> 
-                            <th>Table</th> 
-                            <th>Table</th> 
-                            <th>Tables</th> 
+                            <th>ID</th> 
+                            <th>NIK</th> 
+                            <th>Nama</th> 
+                            <th>Kategory Karir</th> 
+                            <th>HATS</th> 
+                            <th>Keterangan Hats</th> 
+                            <th>Hasil</th>  
+                            <th>Jalur Karir</th>  
+                            <th>Posisi</th>  
+                            <th>Alasan Rekomendasi</th>  
+                            <th>Rekomendasi</th> 
+                            <th>Manage Data</th> 
                         </tr> 
                         </thead> 
                         <tbody> 
@@ -126,6 +147,32 @@
 
 <script src="<?=base_url('assets/js/bootstrap-datepicker.js'); ?>"></script>
 <script>
+    
+function loadTable()
+{
+    $('#komiteTable tbody').fadeOut(200).empty();
+    var url = '<?=site_url("user1/getData"); ?>';
+    $.get(url, function(data){
+        var data_komite = jQuery.parseJSON(data);
+        var data = data_komite['data_komite'];
+        $.each(data_komite['data_komite'], function (i,d) {
+
+            var row='<tr>';
+            row+='<tr>';
+           
+           $.each(d, function(j, e) 
+            {
+                row+='<td>'+e+'</td>';
+           })
+            row+='<td><button class="btn btn-sm btn-default">Edit/Hapus Data</button></td>';
+
+           row+='</tr>';
+           $('#komiteTable tbody').fadeIn(1000).append(row);
+
+        })
+    }); 
+};    
+    
 
     
  $("#menu-toggle").click(function(e) {
@@ -134,11 +181,12 @@
 });
     
 $(document).ready(function() {
+    loadTable();
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd'
     });
     
-    $('#formKomite').submit(function() {
+    $('.formKomite').submit(function() {
       var form = $(this);
       form.children('button').prop('disabled', true);
       $('#addSucess').hide();

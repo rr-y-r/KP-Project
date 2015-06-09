@@ -6,6 +6,8 @@ class Komite_karir extends CI_Model
     {
         parent::__construct();
     }
+    
+    protected $tblname='komite_karir';
 
     function get_by_id($idkomite)
     {
@@ -35,7 +37,7 @@ class Komite_karir extends CI_Model
     }
     
     function insert($data){
-        return $this->db->insert('komite_karir',$data);
+        return $this->db->insert($this->tblname,$data);
     }
  
 /*

@@ -16,9 +16,9 @@ class Komite_karir extends CI_Controller
         $this->load->model('komite_karir');
     }
     
-    function insert(){
-        $data=json_decode(file_get_contents("php://input"));
-        echo $this->komite_karir->insert($data);
+    function getData(){
+        $this->load->model('komite_karir');
+        echo json_encode(array('data_komite'=>$this->komite_karir->get_all()));
     }
     
     private function json_response($successful, $message){

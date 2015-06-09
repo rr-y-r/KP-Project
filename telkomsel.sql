@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: 05 Jun 2015 pada 20.38
+-- Generation Time: 08 Jun 2015 pada 21.04
 -- Versi Server: 5.5.40
 -- PHP Version: 5.4.34
 
@@ -39,7 +39,34 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('1fd6e3499327569db4d405e28e7f192e', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1433558422, 'a:5:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user2";s:2:"id";s:1:"2";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user2";}');
+('7dcb62fa9714626bd7430beb25931abc', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1433822471, '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `komite_karir`
+--
+
+CREATE TABLE IF NOT EXISTS `komite_karir` (
+`id` int(30) NOT NULL,
+  `nik` int(10) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `cat_karir` varchar(25) NOT NULL,
+  `hats` varchar(25) NOT NULL,
+  `ket_hats` varchar(180) NOT NULL,
+  `hasil` varchar(180) NOT NULL,
+  `jalur_karir` varchar(55) NOT NULL,
+  `posisi` varchar(25) NOT NULL,
+  `alasan` varchar(180) NOT NULL,
+  `rekomendasi` varchar(185) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `komite_karir`
+--
+
+INSERT INTO `komite_karir` (`id`, `nik`, `nama`, `cat_karir`, `hats`, `ket_hats`, `hasil`, `jalur_karir`, `posisi`, `alasan`, `rekomendasi`) VALUES
+(1, 1, 'awdad', 'awdad', 'awda', 'awdawd', 'awdawd', 'awdad', 'awdad', 'awdawd', 'zxczcx');
 
 -- --------------------------------------------------------
 
@@ -73,6 +100,12 @@ ALTER TABLE `ci_sessions`
  ADD PRIMARY KEY (`session_id`), ADD KEY `last_activity_idx` (`last_activity`);
 
 --
+-- Indexes for table `komite_karir`
+--
+ALTER TABLE `komite_karir`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -82,6 +115,11 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `komite_karir`
+--
+ALTER TABLE `komite_karir`
+MODIFY `id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user`
 --
