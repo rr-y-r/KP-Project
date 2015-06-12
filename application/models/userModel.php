@@ -53,4 +53,11 @@ class UserModel extends CI_Model
         return ($query->num_rows == 1) ? TRUE : FALSE;
     }
     
+    function getData($username){
+        $users = $this->db
+            ->get_where('user', array('username' => $username))
+            ->result_array();
+
+        return $users;
+    }
 }

@@ -55,25 +55,17 @@ class Komite_karir extends CI_Model
         return TRUE;
     }
 */
-    public function delete($ticketid)
+    public function delete($id)
     {
-        $this->db->where('ticketid',$ticketid);
-        $this->db->delete('ticket');
+        $this->db->where('id',$id);
+        $this->db->delete('komite_karir');
     }
 
-    public function update($ticketid,$jenis,$deskripsi,$lampiran,$status,$expired,$pesan)
+    public function update($id,$data)
     {
-        $ticket =  array(
-            'jenis' => $jenis, 
-            'deskripsi' => $deskripsi, 
-            'lampiran' => $lampiran,
-            'status' => $status,
-            'expired' => $expired,
-            'pesan' => $pesan
-        );
         
-        $this->db->where('ticketid',$ticketid)
-                ->update('ticket', $ticket);
+        $this->db->where('id',$id)
+                ->update('komite_karir', $data);
         
         return TRUE;
     }
