@@ -12,7 +12,7 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a href="#/">Komite Karir</a>
+          <a href="<?=site_url('admin'); ?>">Komite Karir</a>
         </li>
         <li>
           <a href="<?=site_url('admin/manajemen_user'); ?>">Manajemen User</a>
