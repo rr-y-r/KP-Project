@@ -15,6 +15,17 @@ class UserModel extends CI_Model
 
         return $users;
     }
+    
+    function get_user(){
+        return $this->db->select('*')
+            ->order_by('id')
+            ->get('user')
+            ->result_array();
+    }
+    
+    function insert($data){
+        return $this->db->insert('user',$data);
+    }
 
     public function get_id($username)
     {

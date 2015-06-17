@@ -27,7 +27,48 @@ class Admin extends CI_Controller
 
     }
     
+    function manajemen_user(){
+        
+        $data_user = $this->userModel->getData('user1');
+        $this->load->view('manajemen_user', array(
+            'profileData'=>$data_user));
+    }
+    
     function getFormKomite(){
+        
+    }
+    
+    function createUserx(){
+        $data_user = $this->userModel->getData('user1');
+        foreach($data_user as $data => $data_value){
+            foreach($data_value as $row => $row_value){
+                if($row <> "id"){
+                    //code 
+                    $data_input[$row] = $this->input->post($row);
+                    echo $data_input[$row];
+                    
+                }
+            }
+        }
+        
+        $this->userModel->insert($data_input);
+    }
+    
+    function createUser(){
+        sleep(1);
+        
+        $data = array(
+                'username' => $this->input->post('username'), 
+                'password' => $this->input->post('password'), 
+                'tipe' => $this->input->post('tipe'),
+                'nik' => $this->input->post('nik'),
+                'nama' => $this->input->post('ket_hats'),
+                'title' => $this->input->post('hasil'),
+                'tanggal_masuk' => $this->input->post('jalur'),
+                'employee_kategori' => $this->input->post('posisi'),
+                'alasan' => $this->input->post('alasan'),
+                'rekomendasi' => $this->input->post('rekomendasi')
+            );
         
     }
     

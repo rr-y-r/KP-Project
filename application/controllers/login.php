@@ -32,7 +32,7 @@ class Login extends CI_Controller
             $this->session->set_userdata($data);
             if($tipe == 'user1')
             {
-                redirect('user1');
+                redirect('admin');
             }
             else
             {

@@ -6,7 +6,7 @@
             <span class="text-success">
 
                 <a class="text-danger" style="color:#BA1919;" 
-                   href="admin/profile/<?=$this->session->userdata('username'); ?>">PROFILE</a>
+                   href="<?=site_url('admin/profile/');?>/<?=$this->session->userdata('username'); ?>">PROFILE</a>
             </span>
         </li>
         <li>

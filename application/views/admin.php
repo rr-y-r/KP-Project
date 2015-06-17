@@ -237,7 +237,7 @@ function loadTable()
             {
                 row+='<td>'+e+'</td>';
            })
-            row+='<td><button class="btn btn-sm btn-default" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">HAPUS</button></td>'
+            row+='<td><button class="btn btn-sm btn-default" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">HAPUS</button> <a class="btn btn-sm btn-danger delete" href="admin/print/'+d['id']+'">PRINT</a> </td>'
             console.log(d['id']);
            row+='</tr>';
            $('#komiteTable tbody').fadeIn(1000).append(row);

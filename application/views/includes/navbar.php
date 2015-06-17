@@ -12,19 +12,10 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a href="#/">Menu 1</a>
+          <a href="#/">Komite Karir</a>
         </li>
         <li>
-          <a href="#">Menu 2</a>
-        </li>
-        <li>
-          <a href="#">Menu 3</a>
-        </li>
-        <li>
-          <a href="#">Menu 4</a>
-        </li>
-        <li>
-          <a href="#">Menu 5</a>
+          <a href="<?=site_url('admin/manajemen_user'); ?>">Manajemen User</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
