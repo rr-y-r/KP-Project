@@ -113,7 +113,7 @@ class Admin extends CI_Controller
                 'rekomendasi' => $this->input->post('rekomendasi')
             );
             
-            $this->komite_karir->insert($data);
+            $is_added=$this->komite_karir->insert($data);
             
             
             /*
@@ -127,7 +127,7 @@ class Admin extends CI_Controller
                 $this->input->post('rekomendasi')
                 
             );
-            
+            */
             if ($is_added) 
             {
                 $message = "Data komite berhasil diapply !";
@@ -138,7 +138,7 @@ class Admin extends CI_Controller
                 $message = "apply gagal, tolong cek data komite";
                 $this->json_response(FALSE, $message);
             }
-            */
+            
         }
     }
     
@@ -188,7 +188,18 @@ class Admin extends CI_Controller
                 'rekomendasi' => $this->input->post('rekomendasi')
             );
             
-            $this->komite_karir->update($id,$data);
+            $is_updated = $this->komite_karir->update($id,$data);
+            
+            if ($is_updated) 
+            {
+                $message = "Data Komite Dengan NIK : <strong> ".$this->input->post('nik')."</strong> berhasil diubah !";
+                $this->json_response(TRUE, $message);
+            } 
+            else 
+            {
+                $message = "Data Komite Dengan NIK : <strong> ".$this->input->post('nik')."</strong> Edit Error, silahkan cek data anda !";
+                $this->json_response(FALSE, $message);
+            }
 
         }
     }

@@ -36,12 +36,7 @@
                   <div role="tabpanel" class="tab-pane komite" id="komite_karir" aria-labelledby="komite_karir-tab">
 <h4 class="text-center">Form Komite Karir</h4>
                     <!--BEGIN message for showing error/sucess in editing ticket-->
-                    <div id="addSuccess" class="row" style="display: none">
-                          <div id="addSuccessMessage" class="alert alert-info text-center"></div>
-                    </div>
-                    <div id="addError" class="row" style="display: none">
-                          <div id="addErrorMessage" class="alert alert-danger text-center"></div>
-                    </div>
+                    
                     <!--END message for showing error/sucess in editing ticket-->
                      <form class="formKomite" role="form" accept-charset="utf-8">
                         
@@ -87,7 +82,12 @@
                              <input class="form-control" name="rekomendasi" type="text" placeholder="rekomendasi"/>
                         </div>
                         
-
+                    <div id="addSuccess" class="row" style="display: none">
+                          <div id="addSuccessMessage" class="alert alert-info text-center"></div>
+                    </div>
+                    <div id="addError" class="row" style="display: none">
+                          <div id="addErrorMessage" class="alert alert-danger text-center"></div>
+                    </div>
                     <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
                     </form>
                   </div>
@@ -127,12 +127,7 @@
                               <div class="modal-body">
                                   <div class="container-fluid">
                                 <!--BEGIN message for showing error/sucess in editing ticket-->
-                                <div id="editSuccess" class="row" style="display: none">
-                                      <div id="editSuccessMessage" class="alert alert-info text-center"></div>
-                                </div>
-                                <div id="editError" class="row" style="display: none">
-                                      <div id="editErrorMessage" class="alert alert-danger text-center"></div>
-                                </div>
+                                
                                 <!--END message for showing error/sucess in editing ticket-->
 
                                 <!--BEGIN EDIT ticket form-->
@@ -193,7 +188,12 @@
                                          <input class="form-control" name="rekomendasi" type="text" placeholder="rekomendasi"
                                                 value="<?=$row['rekomendasi']; ?>"/>
                                     </div>
-                                
+                                <div id="editSuccess" class="row" style="display: none">
+                                      <div id="editSuccessMessage" class="alert alert-info text-center"></div>
+                                </div>
+                                <div id="editError" class="row" style="display: none">
+                                      <div id="editErrorMessage" class="alert alert-danger text-center"></div>
+                                </div>
                                 <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
                                 </form>
                                 <!--END EDIT Ticket form-->
@@ -288,9 +288,11 @@ $(document).ready(function() {
           if (json.isSuccessful) {
               $('#addSuccessMessage').html(json.message);
               $('#addSuccess').show();
+              loadTable();
           } else {
               $('#addErrorMessage').html(json.message);
               $('#addError').show();
+              loadTable();
           }
 
           form.children('button').prop('disabled', false);
@@ -321,12 +323,13 @@ $(document).ready(function() {
           } else {
               $('#editErrorMessage').html(json.message);
               $('#editError').show();
+              loadTable();
           }
 
           form.children('button').prop('disabled', false);
           form.children('input[name="name"]').select();
       });
-
+        loadTable();
       return false;
     });
 

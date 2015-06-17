@@ -37,7 +37,9 @@ class Komite_karir extends CI_Model
     }
     
     function insert($data){
-        return $this->db->insert($this->tblname,$data);
+        $this->db->insert($this->tblname,$data);
+        
+        return TRUE;
     }
  
 /*
@@ -63,7 +65,6 @@ class Komite_karir extends CI_Model
 
     public function update($id,$data)
     {
-        
         $this->db->where('id',$id)
                 ->update('komite_karir', $data);
         
