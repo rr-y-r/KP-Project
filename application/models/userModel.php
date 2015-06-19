@@ -24,7 +24,9 @@ class UserModel extends CI_Model
     }
     
     function insert($data){
-        return $this->db->insert('user',$data);
+        $this->db->insert('user',$data);
+        
+        return TRUE;
     }
 
     public function get_id($username)
@@ -70,5 +72,18 @@ class UserModel extends CI_Model
             ->result_array();
 
         return $users;
+    }
+    
+    function validation($data){
+        $query = $this->db->get_where('user', $data);
+        
+        return $query->num_rows;
+    }
+    
+    function getUserPassword($data){
+        $password = $this->db->select('password')
+            ->get_where('user',$data)->row();
+        
+        return $password->password;
     }
 }

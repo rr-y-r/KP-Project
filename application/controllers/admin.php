@@ -5,13 +5,13 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        /*
-        if (!$this->is_logged_in())) 
+        
+        if (!$this->session->userdata('is_logged_in')) 
         {
             $this->session->sess_destroy();
             redirect('login');
         }
-        */
+        
         $this->load->model('komite_karir');
         $this->load->model('userModel');
         
@@ -30,12 +30,18 @@ class Admin extends CI_Controller
     function manajemen_user(){
         
         $data_user = $this->userModel->getData('user1');
+        $user_table = $this->userModel->get_user();
         $this->load->view('manajemen_user', array(
-            'profileData'=>$data_user));
+            'profileData'=>$data_user,
+            'userTableData'=>$user_table));
     }
     
     function getFormKomite(){
         
+    }
+    
+    function getUserData(){
+        echo json_encode(array('data_user'=>$this->userModel->get_user()));
     }
     
     function createUserx(){
@@ -51,26 +57,21 @@ class Admin extends CI_Controller
             }
         }
         
-        $this->userModel->insert($data_input);
+        $is_added = $this->userModel->insert($data_input);
+        
+        if ($is_added) 
+            {
+                $message = "Data user berhasil ditambahakan !";
+                $this->json_response(TRUE, $message);
+            } 
+            else 
+            {
+                $message = "tambah data gagal, tolong cek kembali input data";
+                $this->json_response(FALSE, $message);
+            }
+        
     }
     
-    function createUser(){
-        sleep(1);
-        
-        $data = array(
-                'username' => $this->input->post('username'), 
-                'password' => $this->input->post('password'), 
-                'tipe' => $this->input->post('tipe'),
-                'nik' => $this->input->post('nik'),
-                'nama' => $this->input->post('ket_hats'),
-                'title' => $this->input->post('hasil'),
-                'tanggal_masuk' => $this->input->post('jalur'),
-                'employee_kategori' => $this->input->post('posisi'),
-                'alasan' => $this->input->post('alasan'),
-                'rekomendasi' => $this->input->post('rekomendasi')
-            );
-        
-    }
     
     function profile($username){
         $profileData = $this->userModel->getData($username);

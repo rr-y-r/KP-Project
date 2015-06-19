@@ -12,11 +12,18 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a href="<?=site_url('admin'); ?>">Komite Karir</a>
+            <? if($this->session->userdata('username')=="user1"):?>
+                <a href="<?=site_url($this->session->userdata('username')); ?>">Komite Karir</a>
+            <? endif;?>
+            <? if($this->session->userdata('username')<>"user1"):?>
+                <a href="<?=site_url('user2'); ?>">Komite Karir</a>
+            <? endif; ?>
         </li>
+          <? if($this->session->userdata('username')=='user1'): ?>
         <li>
           <a href="<?=site_url('admin/manajemen_user'); ?>">Manajemen User</a>
         </li>
+          <? endif;?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" class="glyphicon glyphicon-th-list" id="menu-toggle"></a></li>

@@ -67,4 +67,34 @@ class Login extends CI_Controller
     {
         return $this->session->userdata('is_logged_in');
     }
+    
+    function forgot_password(){
+        $data = array(
+            'nik' => $this->input->post('q0'),
+            'tgl_masuk' => $this->input->post('q1'),
+            'position_id' => $this->input->post('q2'),
+            'nik_atasan' => $this->input->post('q3')
+        );
+        
+        $valid = $this->userModel->validation($data);
+
+        if ($valid == 1) 
+            {
+                $password = $this->userModel->getUserPassword($data);
+                $message = "password anda : ".$password;
+                $this->json_response(TRUE, $message);
+            } 
+        if($valid == 0) 
+            {
+                $message = "Validasi error, silahkan coba kembali";
+                $this->json_response(FALSE, $message);
+            }
+    }
+    
+    private function json_response($successful, $message){
+        echo json_encode(array(
+            'isSuccessful' => $successful,
+            'message' => $message
+        )); 
+    }
 }

@@ -14,11 +14,85 @@
             <? $this->load->view('includes/sidebar');?>
             
                 <br>
-            <h4 class="text-center headercoeg">Profile</h4>
+                 <br>
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Manajemen Data User</a></li>
+                  <li role="presentation"><a href="#userTab" id="komite_karir-tab" role="tab" data-toggle="tab" aria-controls="userTab" aria-expanded="true">Tambah User Baru</a></li>
+                    
+
+                  <!--
+                    <li role="presentation" class="dropdown">
+                    <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+                      <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
+                      <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
+                    </ul>
+                  </li>
+-->
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+                    
+                    <!--table for crud user goes here-->
+                        <table id="userDataTable" class="table table-hover table-striped table-condensed"> 
+                        <thead style="background-color:#FF6666;"> 
+                        <tr> 
+                            <? foreach($profileData as $row => $row_value): ?>
+                                <? foreach($row_value as $column => $data): ?>
+                                    <? if($column == 'id' or $column == 'username' or $column == 'tipe' or $column == 'nik' or $column == 'status'): ?>
+                                    <th><?=$column; ?></th> 
+                                    <? endif;?>
+                                <? endforeach; ?>
+                            <? endforeach; ?>
+                        </tr> 
+                        </thead> 
+                        <tbody> 
+                            <? foreach($userTableData as $row): ?>
+                    <!--BEGIN Modal For Edit Ticket-->
+                        <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModal" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Edit User ID :</h4>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="container-fluid">
+                                <!--BEGIN message for showing error/sucess in editing ticket-->
+                                
+                                <!--END message for showing error/sucess in editing ticket-->
+
+                                <!--BEGIN EDIT user form-->
+                                <form class="formEdit" role="form" accept-charset="utf-8">
+                                    
+                                <div id="editSuccess" class="row" style="display: none">
+                                      <div id="editSuccessMessage" class="alert alert-info text-center"></div>
+                                </div>
+                                <div id="editError" class="row" style="display: none">
+                                      <div id="editErrorMessage" class="alert alert-danger text-center"></div>
+                                </div>
+                                <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
+                                </form>
+                                <!--END EDIT Ticket form-->
+                              </div>
+                               </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--END Modal For EDIT Ticket-->
+                    <? endforeach; ?>
+                        
+                        </tbody> 
+                    </table> 
+                    </div>
+                  <div role="tabpanel" class="tab-pane komite" id="userTab" aria-labelledby="userTab">
+            <h4 class="text-center headercoeg">Tambah User Baru</h4>
             <form id="form-user" class="form-horizontal" role="form">
             <? foreach($profileData as $row => $row_value): ?>
                 <? foreach($row_value as $column => $data): ?>
-                <? if($column <> "password" and $column <> "id"): ?>
+                <? if($column <> "password" and $column <> "id" and $column <> "nik"): ?>
                     <div class="form-group">
                         <label class="control-label col-md-3"><?=$column; ?>  : </label>
                         <div class="col-md-6">
@@ -34,6 +108,14 @@
                         </div>
                     </div>
                 <? endif; ?>
+                <? if($column == "nik"): ?>
+                    <div class="form-group">
+                        <label class="control-label col-md-3"><?=$column; ?>  : </label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="<?=$column; ?>" type="text" placeholder="<?=$column; ?>" required/>
+                        </div>
+                    </div>
+                <? endif; ?>
                 <? endforeach; ?>
             <? endforeach; ?>
                 <!--<button type="submit" class="btn btn-default">Submit</button>-->
@@ -46,6 +128,8 @@
                           <div id="addErrorMessage" class="alert alert-danger text-center"></div>
                     </div>
             </form>
+                    </div>
+                </div>
         </div>
         </div>
         
@@ -60,10 +144,41 @@
     $("#wrapper").toggleClass("toggled");
 });
     
+    
+function loadTable()
+{
+    $('#userDataTable tbody').fadeOut(200).empty();
+    var url = '<?=site_url("admin/getUserData"); ?>';
+    $.get(url, function(data){
+        var data_user = jQuery.parseJSON(data);
+        var data = data_user['data_user'];
+        $.each(data_user['data_user'], function (i,d) {
+            
+            var row='<tr>';
+            row+='<tr>';
+           
+           $.each(d, function(j, e) 
+            {
+               if(j == 'id' || j == 'username' || j == 'tipe' || j == 'nik' || j == 'status'){
+                  row+='<td>'+e+'</td>'; 
+               } 
+           })
+            
+           row+='</tr>';
+           $('#userDataTable tbody').fadeIn(1000).append(row);
+
+        })
+    }); 
+}; 
+    
 $(document).ready(function() {
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd'
     });
+    
+    loadTable();
+    
+     $("#menu-toggle").delay(2000).click();
     
      $('#form-user').submit(function() {
       var form = $(this);
@@ -89,7 +204,6 @@ $(document).ready(function() {
       });
 
       return false;
-        loadTable();
     });
 
     $('.content').fadeIn(1000);
