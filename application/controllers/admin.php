@@ -27,6 +27,21 @@ class Admin extends CI_Controller
 
     }
     
+    function print_formKomite(){
+        $this->load->view('test_table');
+    }
+    
+    function monitoring(){
+        /*
+        this load data kerjaan
+        this load data karyawan
+        this input status kerjaan on karyawan
+        
+        */
+        $data_kerjaan = $this->komite_karir->getDatabyTipe($this->session->userdata('tipe'));
+        $this->load->view('monitoring');
+    }
+    
     function manajemen_user(){
         
         $data_user = $this->userModel->getData('user1');
@@ -51,7 +66,6 @@ class Admin extends CI_Controller
                 if($row <> "id"){
                     //code 
                     $data_input[$row] = $this->input->post($row);
-                    echo $data_input[$row];
                     
                 }
             }

@@ -20,13 +20,15 @@ class Login extends CI_Controller
             $username = $this->input->post('username');
             $id = $this->userModel->get_id($username);
             $tipe = $this->userModel->get_tipe($username);
+            $NIK = $this->userModel->get_NIK($username);
             
 
             $data = array(
                 'username' => $username,
                 'id' => $id,
                 'is_logged_in' => TRUE,
-                'tipe' => $tipe
+                'tipe' => $tipe,
+                'nik' => $NIK
             );
 
             $this->session->set_userdata($data);

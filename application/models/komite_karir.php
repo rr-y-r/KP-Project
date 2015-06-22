@@ -25,6 +25,13 @@ class Komite_karir extends CI_Model
             ->get('komite_karir')
             ->result_array();
     }
+    
+    function getDatabyTipe($userType){
+        return $this->db->select('*')
+            ->order_by('id')
+            ->get('komite_karir')
+            ->result_array();
+    }
 
     function get_by_NIK($nik)
     {

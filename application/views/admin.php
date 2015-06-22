@@ -42,7 +42,7 @@
                         
                         <div class="form-group">
                              <label>NIK</label>
-                             <input class="form-control" name="nik" type="text" placeholder="NIK"/>
+                             <input class="form-control" name="nik" type="text" value="<?=$this->session->userdata('nik');?>" disabled/>
                         </div>
                         <div class="form-group">
                              <label>Nama</label>
@@ -208,13 +208,62 @@
                         </tbody> 
                     </table> 
                   </div>
+                    
+                    <div class="print" >
+                    <? foreach($datakomite as $row): ?>
+                    <!--BEGIN Modal For Edit Ticket-->
+                        <div class="modal fade" id="print_id_<?=$row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="printkomite" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Kode ID Komite : <?=$row['id']; ?></h4>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="container-fluid">
+                                <!--BEGIN message for showing error/sucess in editing ticket-->
+                                
+                                <!--END message for showing error/sucess in editing ticket-->
+
+                                <!--BEGIN EDIT ticket form-->
+                                <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>" method="post" accept-charset="utf-8">
+                                    <div class="form-group">
+                                         <label>Jumlah Assesor Penandatangan</label>
+                                         <input class="form-control" type="number" name="id" placeholder="ID" />
+                                    </div>
+                                    <div class="form-group">
+                                         <label>Group</label>
+                                         <input class="form-control" name="group" type="text" placeholder="NIK"/>
+                                    </div>
+                                    <div class="form-group">
+                                         <label>Tanggal</label>
+                                         <input class="form-control" name="tanggal" type="text" placeholder="nama pegawai"/>
+                                    </div>
+                                    
+                                <div id="editSuccess" class="row" style="display: none">
+                                      <div id="editSuccessMessage" class="alert alert-info text-center"></div>
+                                </div>
+                                <div id="editError" class="row" style="display: none">
+                                      <div id="editErrorMessage" class="alert alert-danger text-center"></div>
+                                </div>
+                                <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
+                                </form>
+                                <!--END EDIT Ticket form-->
+                              </div>
+                               </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--END Modal For EDIT Ticket-->
+                    <? endforeach; ?>
+                    
+                    </div>
 
               </div>
                 
             </div>
+           </div>
         </div>
-        </div>
-        
     </div>
 </div>
 
@@ -237,7 +286,7 @@ function loadTable()
             {
                 row+='<td>'+e+'</td>';
            })
-            row+='<td><button class="btn btn-sm btn-default" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">HAPUS</button> <a class="btn btn-sm btn-danger delete" href="admin/print/'+d['id']+'">PRINT</a> </td>'
+            row+='<td><button class="btn btn-sm btn-default" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">HAPUS</button> <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#print_id_'+d['id']+'">PRINT</a> </td>'
             console.log(d['id']);
            row+='</tr>';
            $('#komiteTable tbody').fadeIn(1000).append(row);
@@ -273,6 +322,8 @@ $(document).ready(function() {
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd'
     });
+    
+    $("#menu-toggle").click();
     
     $('.formKomite').submit(function() {
       var form = $(this);
@@ -332,6 +383,8 @@ $(document).ready(function() {
         loadTable();
       return false;
     });
+    
+
 
     
 

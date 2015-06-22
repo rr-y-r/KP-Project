@@ -74,6 +74,12 @@ class UserModel extends CI_Model
         return $users;
     }
     
+    function get_NIK($username){
+        $row = $this->db->get_where('user', array('username' => $username))->row();
+        return $row->nik;
+        
+    }
+    
     function validation($data){
         $query = $this->db->get_where('user', $data);
         

@@ -4,7 +4,7 @@
 
 <div class="container">
     
-    <div class="content">
+    <div class="content" style="display:none">
 	   <div class="row clearfix">
 
             
@@ -41,7 +41,7 @@
                         <tr> 
                             <? foreach($profileData as $row => $row_value): ?>
                                 <? foreach($row_value as $column => $data): ?>
-                                    <? if($column == 'id' or $column == 'username' or $column == 'tipe' or $column == 'nik' or $column == 'status' or $column == 'department'): ?>
+                                    <? if($column == 'id' or $column == 'username' or $column == 'tipe' or $column == 'nik' or $column == 'status'): ?>
                                     <th><?=$column; ?></th> 
                                     <? endif;?>
                                 <? endforeach; ?>
@@ -92,7 +92,7 @@
             <form id="form-user" class="form-horizontal" role="form">
             <? foreach($profileData as $row => $row_value): ?>
                 <? foreach($row_value as $column => $data): ?>
-                <? if($column <> "password" and $column <> "id" and $column <> "nik" and $column <> "tipe" and $column <> "department"): ?>
+                <? if($column <> "password" and $column <> "id" and $column <> "nik"): ?>
                     <div class="form-group">
                         <label class="control-label col-md-3"><?=$column; ?>  : </label>
                         <div class="col-md-6">
@@ -116,32 +116,6 @@
                         </div>
                     </div>
                 <? endif; ?>
-                <? if($column == "department"): ?>
-                    <div class="form-group">
-                            <label class="control-label col-md-3">Departement</label>
-                            <div class="col-md-6">
-                                <select class="form-control" name="<?=$column; ?>" required>
-                                    <option></option>
-                                    <option value="HRD">HRD</option>
-                                    <option value="HMC">HMC</option>
-                                </select>
-                            </div>
-                      </div>  
-                    
-                <? endif; ?>
-                <? if($column == "tipe"): ?>
-                    <div class="form-group">
-                            <label class="control-label col-md-3">Tipe User</label>
-                            <div class="col-md-6">
-                                <select class="form-control" name="<?=$column; ?>" required>
-                                    <option></option>
-                                    <option value="Manajer">Manajer</option>
-                                    <option value="Anggota">Anggota</option>
-                                </select>
-                            </div>
- 
-                    </div>
-                <? endif; ?>
                 <? endforeach; ?>
             <? endforeach; ?>
                 <!--<button type="submit" class="btn btn-default">Submit</button>-->
@@ -160,7 +134,6 @@
         </div>
         
     </div>
-</div>
 </div>
 
 <script src="<?=base_url('assets/js/bootstrap-datepicker.js'); ?>"></script>
@@ -186,7 +159,7 @@ function loadTable()
            
            $.each(d, function(j, e) 
             {
-               if(j == 'id' || j == 'username' || j == 'tipe' || j == 'nik' || j == 'status' || j == 'department'){
+               if(j == 'id' || j == 'username' || j == 'tipe' || j == 'nik' || j == 'status'){
                   row+='<td>'+e+'</td>'; 
                } 
            })
