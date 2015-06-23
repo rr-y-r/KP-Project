@@ -227,14 +227,9 @@
 
                                 <!--BEGIN EDIT ticket form-->
                                 <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>" method="post" accept-charset="utf-8">
-                                    <div class="form-group" id="assesor">
-                                         <label class="col-md-12">Jumlah Assesor Penandatangan</label>
-                                        <div class="col-md-6">
-                                         <button type="button" id="tambah" class="btn btn-success form-control">tambah</button>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <button type="button" id="kurang" class="btn btn-danger form-control">kurang</button>
-                                        </div>
+                                    <div class="form-group hidden">
+                                         <label>Group</label>
+                                         <input class="form-control" name="komite_id" type="text" val="<?=$row['id']; ?>" placeholder="nama group"/>
                                     </div>
                                     <div class="form-group">
                                          <label>Group</label>
@@ -251,6 +246,20 @@
                                 <div id="editError" class="row" style="display: none">
                                       <div id="editErrorMessage" class="alert alert-danger text-center"></div>
                                 </div>
+                                    <div class="form-group" id="assesor">
+                                         <label class="col-md-12">Jumlah Assesor Penandatangan</label>
+                                        <div class="hidden">
+                                         <input type="number" name="jumlah" id="jumlah" class="form-control"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                         <button type="button" id="tambah" class="btn btn-success form-control">tambah</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <button type="button" id="kurang" class="btn btn-danger form-control">kurang</button>
+                                        </div>
+                                    </div>
+                                    
+                                    
                                 <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
                                 </form>
                                 <!--END EDIT Ticket form-->
@@ -340,18 +349,13 @@ $(document).ready(function() {
         var data_user = jQuery.parseJSON(data);
         var data = data_user['data_user'];
         $.each(data_user['data_user'], function (i,d) {
-            
-            
-        
-           
-               person +='<option value="'+d['username']+'">'+d['username']+'</option>';
- 
-                
+               person +='<option value="'+d['username']+'"> '+d['username']+' - '+d['nama']+' - '+d['tipe']+'</option>';
         })
-        person+='</select><br>';
-          
+        person+='</select>';
+          i++;
             $('#assesor').append(person);
-            i++;
+            $('#jumlah').val(i);
+            
     });        
         
         /*
@@ -366,6 +370,7 @@ $(document).ready(function() {
         e.preventDefault();
         i--;
         $('.assesor'+i).remove();
+        $('#jumlah').val(i);
         console.log(i);
     });
     

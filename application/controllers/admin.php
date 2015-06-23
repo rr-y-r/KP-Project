@@ -28,7 +28,24 @@ class Admin extends CI_Controller
     }
     
     function print_formKomite(){
-        $this->load->view('test_table');
+        
+        $data = array(
+            'group' => $this->input->post('group'),
+            'tanggal' => $this->input->post('tanggal'),
+            'jumlah' => $temp = $this->input->post('jumlah')
+        ); 
+        
+        $temp = $this->input->post('jumlah');
+        
+        for($i=1;$i<=$temp;$i++){
+            
+            $data['assesor'.$i] =   $this->input->post('assesor'.$i);
+                
+        }
+            
+        $this->load->view('test_table', array(
+            'data_print' => $data
+        ));
     }
     
     function monitoring(){

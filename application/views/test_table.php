@@ -11,7 +11,7 @@
                         <thead style="background-color:#FF6666;">
                       <tr>
                         <th>No</th>
-                        <th>Nama</th>
+                        <th>Nama :<br> </th>
                         <th>NIK</th>
                         <th>Posisi Saat Ini</th>
                         <th>Band</th>

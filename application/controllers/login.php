@@ -73,8 +73,8 @@ class Login extends CI_Controller
     function forgot_password(){
         $data = array(
             'nik' => $this->input->post('q0'),
-            'tgl_masuk' => $this->input->post('q1'),
-            'position_id' => $this->input->post('q2'),
+            'username' => $this->input->post('q1'),
+            'tgl_masuk' => $this->input->post('q2'),
             'nik_atasan' => $this->input->post('q3')
         );
         

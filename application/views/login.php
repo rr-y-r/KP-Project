@@ -49,6 +49,19 @@
                      <label>NIK</label>
                      <input class="form-control" type="text" name="q0" placeholder="NIK ex: 76219" required/>
                 </div>
+                <div class="form-group">
+                     <label>username</label>
+                     <input class="form-control" type="text" name="q1" placeholder="USERNAME ex: user1" required/>
+                </div>
+                <div class="form-group">
+                     <label>tanggal masuk</label>
+                     <input class="form-control" type="text" name="q2" placeholder="tanggal masuk: 1996-11-04"/>
+                </div>
+                <div class="form-group">
+                     <label>NIK atasan</label>
+                     <input class="form-control" type="text" name="q3" placeholder="NIK atasan: 67002"/>
+                </div>
+                
 
                 <br>
 

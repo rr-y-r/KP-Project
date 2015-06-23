@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: 11 Jun 2015 pada 20.28
+-- Generation Time: 23 Jun 2015 pada 01.37
 -- Versi Server: 5.5.40
 -- PHP Version: 5.4.34
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('cc4b0c5f8f401eabb1b9aa86f82e7948', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1434079336, '');
+('379fe25a4a45d0c59bd3d8367084c02d', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36', 1435048368, 'a:6:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";}');
 
 -- --------------------------------------------------------
 
@@ -59,14 +59,16 @@ CREATE TABLE IF NOT EXISTS `komite_karir` (
   `posisi` varchar(25) NOT NULL,
   `alasan` varchar(180) NOT NULL,
   `rekomendasi` varchar(185) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `komite_karir`
 --
 
 INSERT INTO `komite_karir` (`id`, `nik`, `nama`, `cat_karir`, `hats`, `ket_hats`, `hasil`, `jalur_karir`, `posisi`, `alasan`, `rekomendasi`) VALUES
-(1, 1, 'tess', 'awdad', 'awda', 'awdawd', 'awdawd', 'awdad', 'awdad', 'tess', 'zxczcx');
+(1, 1, 'tess', 'awdad', 'awda', 'awdawd', 'awdawd', 'awdad', 'awdad', 'test', 'zxczcx'),
+(2, 0, '00', '00', '00', '00', '00', '00', '00', '00', '00'),
+(3, 11, '111', '11', '11', '11', '11', '11', '11', '11', '11');
 
 -- --------------------------------------------------------
 
@@ -114,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `area` varchar(255) NOT NULL,
   `tgl_masuk` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `user`
@@ -122,7 +124,21 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `tipe`, `nik`, `nama`, `title`, `tanggal_masuk`, `employee_category`, `organization`, `job`, `band_posisi`, `band_individu`, `location`, `kota`, `no_hp`, `email`, `gender`, `status_pernikahan`, `agama`, `tanggal_lahir`, `start_date_assignment`, `admins`, `nik_atasan`, `nama_atasan`, `medical_admin`, `edu_lvl`, `edu_institution`, `edu_faculty`, `position_id`, `section`, `department`, `division`, `group`, `egroup`, `directorate`, `area`, `tgl_masuk`, `status`) VALUES
 (1, 'user1', 'user1', 'user1', 76219, 'Robertho L.R.', 'Manager Network Service Makassar', '1996-11-04', 'PERMANENT', 'Network Service Makassar Department', 'Dep Head Network Service', '3.2', '3.3', 'Branch Makassar', 'MAKASSAR', '62811430022', 'Robertho_L_R@telkomsel.co.id', 'M', 'M', 'PROTESTAN', '1976-03-28', '2015-05-08', 'SULMALIRJA SALES CS', '67002', 'Noviandri', 'AREA4', 'S1', 'STIE Ebenhaezar', 'Management', '112682', '', 'Network Service Makassar Department', 'ICT Operation Region Sulawesi Division', 'ICT Network Management Area Pamasuka Group', '', 'Sales Directorate', 'AREA 4', '1996-11-04', 'AKTIF'),
-(2, 'user2', 'user2', 'user2', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+(2, 'user2', 'user2', 'user2', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(3, '666', '666', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(4, 'test2', 'test2', 'test', 666, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(5, 'anggota_HMC1', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HMC', '', '', '', '', '', '', ''),
+(6, 'anggota_HRD1', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HRD', '', '', '', '', '', '', ''),
+(7, 'manajer_hmc', '1234', 'Manajer', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HMC', '', '', '', '', '', '', ''),
+(8, 'manajer_hrd', '1234', 'Manajer', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HRD', '', '', '', '', '', '', ''),
+(9, 'anggota_hmc2', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HMC', '', '', '', '', '', '', ''),
+(10, 'anggota_hmc3', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HMC', '', '', '', '', '', '', ''),
+(11, 'anggota_hmc4', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HMC', '', '', '', '', '', '', ''),
+(12, 'anggota_hmc5', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HMC', '', '', '', '', '', '', ''),
+(13, 'anggota_hrd2', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HRD', '', '', '', '', '', '', ''),
+(14, 'anggota_hrd3', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HRD', '', '', '', '', '', '', ''),
+(15, 'anggota_hrd4', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HRD', '', '', '', '', '', '', ''),
+(16, 'anggota_hrd5', '1234', 'Anggota', 1234, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'HRD', '', '', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -154,12 +170,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `komite_karir`
 --
 ALTER TABLE `komite_karir`
-MODIFY `id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
