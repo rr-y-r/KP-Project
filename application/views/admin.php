@@ -227,17 +227,22 @@
 
                                 <!--BEGIN EDIT ticket form-->
                                 <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>" method="post" accept-charset="utf-8">
-                                    <div class="form-group">
-                                         <label>Jumlah Assesor Penandatangan</label>
-                                         <input class="form-control" type="number" name="id" placeholder="ID" />
+                                    <div class="form-group" id="assesor">
+                                         <label class="col-md-12">Jumlah Assesor Penandatangan</label>
+                                        <div class="col-md-6">
+                                         <button type="button" id="tambah" class="btn btn-success form-control">tambah</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <button type="button" id="kurang" class="btn btn-danger form-control">kurang</button>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                          <label>Group</label>
-                                         <input class="form-control" name="group" type="text" placeholder="NIK"/>
+                                         <input class="form-control" name="group" type="text" placeholder="nama group"/>
                                     </div>
                                     <div class="form-group">
                                          <label>Tanggal</label>
-                                         <input class="form-control" name="tanggal" type="text" placeholder="nama pegawai"/>
+                                         <input class="form-control" name="tanggal" type="text" placeholder="contoh : 2015-6-23"/>
                                     </div>
                                     
                                 <div id="editSuccess" class="row" style="display: none">
@@ -282,8 +287,7 @@ function loadTable()
             var row='<tr>';
             row+='<tr>';
            
-           $.each(d, function(j, e) 
-            {
+           $.each(d, function(j, e) {
                 row+='<td>'+e+'</td>';
            })
             row+='<td><button class="btn btn-sm btn-default" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">HAPUS</button> <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#print_id_'+d['id']+'">PRINT</a> </td>'
@@ -324,6 +328,46 @@ $(document).ready(function() {
     });
     
     $("#menu-toggle").click();
+    
+    var i = 0;
+    
+    $("#tambah").click(function(e) {
+        e.preventDefault();
+        
+        var url = '<?=site_url("admin/getUserData"); ?>';
+        var person ='<select class="form-control assesor'+i+'" name="assesor'+i+'" required>';
+        $.get(url, function(data){
+        var data_user = jQuery.parseJSON(data);
+        var data = data_user['data_user'];
+        $.each(data_user['data_user'], function (i,d) {
+            
+            
+        
+           
+               person +='<option value="'+d['username']+'">'+d['username']+'</option>';
+ 
+                
+        })
+        person+='</select><br>';
+          
+            $('#assesor').append(person);
+            i++;
+    });        
+        
+        /*
+        
+        var person ='<select class="form-control assesor'+i+'" name="assesor'+i+'" required><option value="HRD">HRD</option><option value="HMC">HMC</option></select><br>';
+        */
+        
+        
+        console.log(i);
+    });
+    $("#kurang").click(function(e) {
+        e.preventDefault();
+        i--;
+        $('.assesor'+i).remove();
+        console.log(i);
+    });
     
     $('.formKomite').submit(function() {
       var form = $(this);
