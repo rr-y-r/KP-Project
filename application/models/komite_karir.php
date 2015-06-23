@@ -9,14 +9,7 @@ class Komite_karir extends CI_Model
     
     protected $tblname='komite_karir';
 
-    function get_by_id($idkomite)
-    {
-        $form = $this->db
-            ->get_where('komite_karir', array('id' => $idkomite))
-            ->result_array();
 
-        return $form;
-    }
     
     function get_all()
     {
@@ -24,6 +17,11 @@ class Komite_karir extends CI_Model
             ->order_by('id')
             ->get('komite_karir')
             ->result_array();
+    }
+    
+    function get_by_id($id){
+        return  $this->db->get_where('komite_karir', array('id' => $id))->result_array();
+
     }
     
     function getDatabyTipe($userType){

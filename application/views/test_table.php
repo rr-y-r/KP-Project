@@ -1,6 +1,5 @@
 <? $this->load->view('includes/header');?>
 
-
 <div class="container">
 
 	   <div class="row">
@@ -11,7 +10,7 @@
                         <thead style="background-color:#FF6666;">
                       <tr>
                         <th>No</th>
-                        <th>Nama :<br> </th>
+                        <th>Nama<br></th>
                         <th>NIK</th>
                         <th>Posisi Saat Ini</th>
                         <th>Band</th>
@@ -24,8 +23,8 @@
                          <tbody>
                              <tr>
                                  <td rowspan=11>1</td> 
-                                 <td rowspan=11> nama : </td> 
-                                 <td rowspan=11> nik </td>
+                                 <td rowspan=11> nama :<br> <b><?=$data_komkar[0]['nama'];?></b></td> 
+                                 <td rowspan=11> nik :<br> <b><?=$data_komkar[0]['nik'];?></b></td> 
                              </tr>
                              <tr>
                                  <td>Nama posisi

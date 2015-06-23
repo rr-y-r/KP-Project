@@ -42,7 +42,7 @@
                         
                         <div class="form-group">
                              <label>NIK</label>
-                             <input class="form-control" name="nik" type="text" value="<?=$this->session->userdata('nik');?>" disabled/>
+                             <input class="form-control" name="nik" type="text" placeholder="NIK Pegawai" />
                         </div>
                         <div class="form-group">
                              <label>Nama</label>
@@ -228,8 +228,8 @@
                                 <!--BEGIN EDIT ticket form-->
                                 <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>" method="post" accept-charset="utf-8">
                                     <div class="form-group hidden">
-                                         <label>Group</label>
-                                         <input class="form-control" name="komite_id" type="text" val="<?=$row['id']; ?>" placeholder="nama group"/>
+                                         <label>id komite</label>
+                                         <input class="form-control" name="komite_id" type="text" value="<?=$row['id']; ?>"/>
                                     </div>
                                     <div class="form-group">
                                          <label>Group</label>

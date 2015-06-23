@@ -32,8 +32,11 @@ class Admin extends CI_Controller
         $data = array(
             'group' => $this->input->post('group'),
             'tanggal' => $this->input->post('tanggal'),
-            'jumlah' => $temp = $this->input->post('jumlah')
+            'jumlah' => $this->input->post('jumlah'),
+            'id_komite' => $this->input->post('komite_id')
         ); 
+        
+        $data_komite = $this->komite_karir->get_by_id(1);
         
         $temp = $this->input->post('jumlah');
         
@@ -44,7 +47,8 @@ class Admin extends CI_Controller
         }
             
         $this->load->view('test_table', array(
-            'data_print' => $data
+            'data_print' => $data,
+            'data_komkar' => $data_komite
         ));
     }
     
