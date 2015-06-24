@@ -4,9 +4,9 @@
 
 	   <div class="row">
 
-                <br>
+                <button class="pull-right btn btn-success print-btn" onclick="return printBtn()">print</button>
                 <h4 class="text-center">BERITA ACARA SIDANG KOMITE KARIR PT. TELEKOMUNIKASI SELULAR</h2>
-                     <table id="komiteTable" class="table table-bordered table-striped table-condensed"> 
+                     <table id="komiteTable" class="table table-bordered table-striped table-condensed print-tab"> 
                         <thead style="background-color:#FF6666;">
                       <tr>
                         <th>No</th>
@@ -23,20 +23,20 @@
                          <tbody>
                              <tr>
                                  <td rowspan=11>1</td> 
-                                 <td rowspan=11> nama :<br> <b><?=$data_komkar[0]['nama'];?></b></td> 
-                                 <td rowspan=11> nik :<br> <b><?=$data_komkar[0]['nik'];?></b></td> 
+                                 <td rowspan=11> nama :<hr> <b><?=$data_komkar[0]['nama'];?></b></td> 
+                                 <td rowspan=11> nik :<hr> <b><?=$data_komkar[0]['nik'];?></b></td> 
                              </tr>
                              <tr>
-                                 <td>Nama posisi
+                                 <td>Nama posisi :<hr> <b><?=$data_komkar[0]['posisi'];?></b> 
                                      <br>
                                      <br>
                                  </td>
                                  <td></td><td></td><td></td>
-                                 <td>Strongly Recommended</td>
-                                 <td>Promosi</td>
-                                 <td>Struktural Band
+                                 <td><input type="checkbox" > Strongly Recommended</td>
+                                 <td><input type="checkbox" > Promosi</td>
+                                 <td><input type="checkbox" > Struktural Band
                                     <br>
-                                     Fungstionalitas Band
+                                     <input type="checkbox" > Fungstionalitas Band
                                  </td>
                              </tr>
                              <tr>
@@ -45,11 +45,11 @@
                                      <br>
                                  </td>
                                  <td></td><td></td><td></td>
-                                 <td>Recommended</td>
-                                 <td>Rotasi</td>
-                                 <td>Struktural
+                                 <td><input type="checkbox" > Recommended</td>
+                                 <td><input type="checkbox" > Rotasi</td>
+                                 <td><input type="checkbox" > Struktural
                                     <br>
-                                     Fungstionalitas
+                                     <input type="checkbox" > Fungstionalitas
                                  </td>
                              </tr>
                              <tr>
@@ -61,8 +61,8 @@
                                  </td>
                                  <td>nilai</td>
                                  <td>nilai</td>
-                                 <td>not Recommended</td>
-                                 <td colspan="2">belum direkomendasikan, alasan <br></td>
+                                 <td><input type="checkbox" > not Recommended</td>
+                                 <td colspan="2"><input type="checkbox" > belum direkomendasikan, alasan <br></td>
                              </tr>
                              <tr>
                                  <td>Group
@@ -128,16 +128,34 @@
 
                 </tbody>
                 </table>
+           <hr><hr><hr>
+           <div align="center">
 
+           <? for($i=1;$i<$data_print['jumlah'];$i++): ?>
+            <SPAN class=sentence style="text-decoration: overline;"><?=$data_print['assesor'.$i];?> 
+                ( <?=$data_print['jabatan'.$i];?> )</SPAN>
+                
+            <? endfor; ?>
+
+</div>
     <!-- Sidebar -->
             
         </div>
         </div>
-        
-    </div>
-</div>
+
 
 <script src="<?=base_url('assets/js/bootstrap-datepicker.js'); ?>"></script>
 <script>
+    function printBtn(){
+            $('.print-btn').hide();
+            window.print();
+            $('.print-btn').show();
+            
+        }
+    $(document).ready(function() {
+           
+    });
+    
+    
 
 </script>

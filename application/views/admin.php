@@ -226,7 +226,7 @@
                                 <!--END message for showing error/sucess in editing ticket-->
 
                                 <!--BEGIN EDIT ticket form-->
-                                <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>" method="post" accept-charset="utf-8">
+                                <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>"  target="_blank"  method="post" accept-charset="utf-8">
                                     <div class="form-group hidden">
                                          <label>id komite</label>
                                          <input class="form-control" name="komite_id" type="text" value="<?=$row['id']; ?>"/>
@@ -260,7 +260,7 @@
                                     </div>
                                     
                                     
-                                <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
+                                <button type="submit" id="formSubmit-btn" class="btn btn-success btn-large pull-right">Submit</button>
                                 </form>
                                 <!--END EDIT Ticket form-->
                               </div>
@@ -300,7 +300,7 @@ function loadTable()
                 row+='<td>'+e+'</td>';
            })
             row+='<td><button class="btn btn-sm btn-default" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">HAPUS</button> <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#print_id_'+d['id']+'">PRINT</a> </td>'
-            console.log(d['id']);
+
            row+='</tr>';
            $('#komiteTable tbody').fadeIn(1000).append(row);
 
@@ -338,18 +338,19 @@ $(document).ready(function() {
     
     $("#menu-toggle").click();
     
-    var i = 0;
+    var i = 1;
+    
     
     $("#tambah").click(function(e) {
         e.preventDefault();
         
-        var url = '<?=site_url("admin/getUserData"); ?>';
+        var url = '<?=site_url("admin/getPejabatData"); ?>';
         var person ='<select class="form-control assesor'+i+'" name="assesor'+i+'" required>';
         $.get(url, function(data){
-        var data_user = jQuery.parseJSON(data);
-        var data = data_user['data_user'];
-        $.each(data_user['data_user'], function (i,d) {
-               person +='<option value="'+d['username']+'"> '+d['username']+' - '+d['nama']+' - '+d['tipe']+'</option>';
+        var data_pejabat = jQuery.parseJSON(data);
+
+        $.each(data_pejabat['data_pejabat'], function (i,d) {
+            person +='<option value="'+d['nama']+'"> '+d['nama']+' - '+d['jabatan']+'</option>';
         })
         person+='</select>';
           i++;

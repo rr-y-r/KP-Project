@@ -40,17 +40,19 @@ class Admin extends CI_Controller
         
         $temp = $this->input->post('jumlah');
         
-        for($i=1;$i<=$temp;$i++){
+        for($i=1;$i<$temp;$i++){
             
-            $data['assesor'.$i] =   $this->input->post('assesor'.$i);
-                
+            $data['assesor'.$i] = $this->input->post('assesor'.$i);
+            $data['jabatan'.$i] = $this->userModel->getJabatan($this->input->post('assesor'.$i));
         }
             
         $this->load->view('test_table', array(
             'data_print' => $data,
             'data_komkar' => $data_komite
         ));
+
     }
+    
     
     function monitoring(){
         /*
@@ -78,6 +80,10 @@ class Admin extends CI_Controller
     
     function getUserData(){
         echo json_encode(array('data_user'=>$this->userModel->get_user()));
+    }
+    
+    function getPejabatData(){
+        echo json_encode(array('data_pejabat'=>$this->userModel->getPejabatData()));
     }
     
     function createUserx(){

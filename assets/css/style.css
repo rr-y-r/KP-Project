@@ -10,6 +10,13 @@ body {
     background-color: #fff;
 }
 
+.sentence{
+    font-weight: 900;
+    padding-right: 19px;
+    padding-left: 19px;
+}
+
+
 .login{
     background-image:url('../bg.jpg');
     background-repeat:no-repeat;

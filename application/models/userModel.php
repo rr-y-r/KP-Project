@@ -23,6 +23,17 @@ class UserModel extends CI_Model
             ->result_array();
     }
     
+    function getPejabatData(){
+        return $this->db->select('*')
+            ->get('tpejabat')
+            ->result_array();
+    }
+    
+    function getJabatan($assesor){
+        $data = $this->db->get_where('tpejabat', array('nama' => $assesor))->row();
+        return $data->jabatan;
+    }
+    
     function insert($data){
         $this->db->insert('user',$data);
         
