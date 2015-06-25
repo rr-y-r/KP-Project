@@ -23,9 +23,11 @@
         <li>
           <a href="<?=site_url('admin/manajemen_user'); ?>">Manajemen User</a>
         </li>
+          <!--
         <li>
           <a href="<?=site_url('admin/monitoring'); ?>">Monitoring</a>
         </li>
+-->
           <? endif;?>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -111,7 +111,8 @@
                             <th>Posisi</th>  
                             <th>Alasan Rekomendasi</th>  
                             <th>Rekomendasi</th> 
-                            <th>Manage Data</th> 
+                            <th>Status</th> 
+                            <th>Tool</th> 
                         </tr> 
                         </thead> 
                         <tbody> 
@@ -138,6 +139,10 @@
                                                 value="<?=$row['id']; ?>" />
                                     </div>
                                     <div class="form-group">
+                                         <label>STATUS SK KOMITE KARIR</label>
+                                         <textarea class="form-control" rows="3" name="status" placeholder="Sudah / Belum ditanda-tangan"></textarea> 
+                                    </div>
+                                    <div class="form-group form_nik">
                                          <label>NIK</label>
                                          <input class="form-control" name="nik" type="text" placeholder="NIK"
                                                 value="<?=$row['nik']; ?>"/>
@@ -179,7 +184,7 @@
                                     </div>
                                     <div class="form-group">
                                          <label>Alasan Belum Direkomendasikan</label>
-                                         <textarea class="form-control" rows="5" name="alasan"
+                                         <textarea class="form-control" rows="3" name="alasan"
                                                    value="<?=$row['alasan']; ?>"></textarea> 
 
                                     </div>
@@ -188,6 +193,8 @@
                                          <input class="form-control" name="rekomendasi" type="text" placeholder="rekomendasi"
                                                 value="<?=$row['rekomendasi']; ?>"/>
                                     </div>
+                                    
+                                    
                                 <div id="editSuccess" class="row" style="display: none">
                                       <div id="editSuccessMessage" class="alert alert-info text-center"></div>
                                 </div>
@@ -297,9 +304,13 @@ function loadTable()
             row+='<tr>';
            
            $.each(d, function(j, e) {
-                row+='<td>'+e+'</td>';
+               if(d['status']!==""){
+                    row+='<td class="success"><b>'+e+'</b></td>';   
+               }else{
+                    row+='<td><b>'+e+'</b></td>';
+                   }
            })
-            row+='<td><button class="btn btn-sm btn-default" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">HAPUS</button> <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#print_id_'+d['id']+'">PRINT</a> </td>'
+            row+='<td><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">&nbsp;HAPUS&nbsp;</button> <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#print_id_'+d['id']+'">&nbsp;&nbsp;PRINT&nbsp;&nbsp;</a> </td>'
 
            row+='</tr>';
            $('#komiteTable tbody').fadeIn(1000).append(row);
@@ -339,6 +350,7 @@ $(document).ready(function() {
     $("#menu-toggle").click();
     
     var i = 1;
+    
     
     
     $("#tambah").click(function(e) {

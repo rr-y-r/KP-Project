@@ -205,7 +205,7 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('hasil', 'hasil', 'required|max_length[254]');
         $this->form_validation->set_rules('jalur', 'jalur', 'required|max_length[254]');
         $this->form_validation->set_rules('posisi', 'posisi', 'required|max_length[254]');
-        $this->form_validation->set_rules('alasan', 'alasan', 'required|max_length[254]');
+        $this->form_validation->set_rules('alasan', 'alasan', 'max_length[254]');
         $this->form_validation->set_rules('rekomendasi', 'rekomendasi', 'required|max_length[254]');
 
         if ($this->form_validation->run() == FALSE) 
@@ -227,7 +227,8 @@ class Admin extends CI_Controller
                 'jalur_karir' => $this->input->post('jalur'),
                 'posisi' => $this->input->post('posisi'),
                 'alasan' => $this->input->post('alasan'),
-                'rekomendasi' => $this->input->post('rekomendasi')
+                'rekomendasi' => $this->input->post('rekomendasi'),
+                'status' => $this->input->post('status')
             );
             
             $is_updated = $this->komite_karir->update($id,$data);
