@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: 23 Jun 2015 pada 01.37
+-- Generation Time: 24 Jun 2015 pada 20.12
 -- Versi Server: 5.5.40
 -- PHP Version: 5.4.34
 
@@ -39,7 +39,10 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('379fe25a4a45d0c59bd3d8367084c02d', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36', 1435048368, 'a:6:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";}');
+('26847d818d274b8767bc68a8fd08a560', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36', 1435164398, 'a:6:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";}'),
+('27703dae68f7a13e5fdff6ff316e04c2', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36', 1435083356, 'a:6:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";}'),
+('d337180c378db77242056ee096a69191', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36', 1435134549, 'a:6:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";}'),
+('fe043d33dccdc0b0cf9ba397998b14b0', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36', 1435201413, 'a:6:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";}');
 
 -- --------------------------------------------------------
 
@@ -58,17 +61,40 @@ CREATE TABLE IF NOT EXISTS `komite_karir` (
   `jalur_karir` varchar(55) NOT NULL,
   `posisi` varchar(25) NOT NULL,
   `alasan` varchar(180) NOT NULL,
-  `rekomendasi` varchar(185) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `rekomendasi` varchar(185) NOT NULL,
+  `status` varchar(25) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `komite_karir`
 --
 
-INSERT INTO `komite_karir` (`id`, `nik`, `nama`, `cat_karir`, `hats`, `ket_hats`, `hasil`, `jalur_karir`, `posisi`, `alasan`, `rekomendasi`) VALUES
-(1, 1, 'tess', 'awdad', 'awda', 'awdawd', 'awdawd', 'awdad', 'awdad', 'test', 'zxczcx'),
-(2, 0, '00', '00', '00', '00', '00', '00', '00', '00', '00'),
-(3, 11, '111', '11', '11', '11', '11', '11', '11', '11', '11');
+INSERT INTO `komite_karir` (`id`, `nik`, `nama`, `cat_karir`, `hats`, `ket_hats`, `hasil`, `jalur_karir`, `posisi`, `alasan`, `rekomendasi`, `status`) VALUES
+(1, 1, 'tess', 'awdad', 'awda', 'awdawd', 'awdawd', 'awdad', 'awdad', '', 'zxczcx', 'diterima'),
+(2, 0, '00', '00', '00', '00', '00', '00', '00', '00', '00', ''),
+(3, 11, '111', '11', '11', '11', '11', '11', '11', '11', '11', ''),
+(4, 12312, 'ijwij', 'ijijwii', 'jiji', 'jij', 'iji', 'jij', 'ij', 'ijij', 'ij', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tpejabat`
+--
+
+CREATE TABLE IF NOT EXISTS `tpejabat` (
+  `nama` varchar(255) NOT NULL,
+  `jabatan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `tpejabat`
+--
+
+INSERT INTO `tpejabat` (`nama`, `jabatan`) VALUES
+('pejabat1', 'jabatan1'),
+('pejabat2', 'jabatan2'),
+('pejabat3', 'jabatan3'),
+('pejabat4', 'jabatan4');
 
 -- --------------------------------------------------------
 
@@ -170,7 +196,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `komite_karir`
 --
 ALTER TABLE `komite_karir`
-MODIFY `id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user`
 --
