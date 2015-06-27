@@ -21,14 +21,15 @@ class Login extends CI_Controller
             $id = $this->userModel->get_id($username);
             $tipe = $this->userModel->get_tipe($username);
             $NIK = $this->userModel->get_NIK($username);
-            
+            $department = $this->userModel->get_group($username);
 
             $data = array(
                 'username' => $username,
                 'id' => $id,
                 'is_logged_in' => TRUE,
                 'tipe' => $tipe,
-                'nik' => $NIK
+                'nik' => $NIK,
+                'group' => $department
             );
 
             $this->session->set_userdata($data);
@@ -38,7 +39,7 @@ class Login extends CI_Controller
             }
             else
             {
-                redirect('user2');
+                redirect('user');
             }
         } else 
         {

@@ -29,6 +29,19 @@ class UserModel extends CI_Model
             ->result_array();
     }
     
+    function get_group($username){
+        $row = $this->db->get_where('user', array('username' => $username))->row();
+        return $row->department;
+    }
+    
+    function get_user_by_group($x){
+       $users = $this->db
+            ->get_where('user', array('department' => $x))
+            ->result_array();
+
+        return $users;
+    }
+    
     function getJabatan($assesor){
         $data = $this->db->get_where('tpejabat', array('nama' => $assesor))->row();
         return $data->jabatan;

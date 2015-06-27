@@ -175,7 +175,7 @@
 function loadTable()
 {
     $('#userDataTable tbody').fadeOut(200).empty();
-    var url = '<?=site_url("admin/getUserData"); ?>';
+    var url = '<?=site_url("user/get_user_data_by_group/".$this->session->userdata('group')); ?>';
     $.get(url, function(data){
         var data_user = jQuery.parseJSON(data);
         var data = data_user['data_user'];
@@ -213,7 +213,7 @@ $(document).ready(function() {
       $('#addSucess').hide();
       $('#addError').hide();
 
-      var faction = '<?=site_url('admin/createUserx'); ?>';
+      var faction = '<?=site_url('user/createUserx'); ?>';
       var fdata = form.serialize();
 
       $.post(faction, fdata, function(rdata) {

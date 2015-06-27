@@ -16,10 +16,10 @@
                 <a href="<?=site_url('admin'); ?>">Komite Karir</a>
             <? endif;?>
             <? if($this->session->userdata('username')<>"user1"):?>
-                <a href="<?=site_url('user2'); ?>">Komite Karir</a>
+                <a href="<?=site_url('user'); ?>">Komite Karir</a>
             <? endif; ?>
         </li>
-          <? if($this->session->userdata('username')=='user1'): ?>
+          <? if($this->session->userdata('username')=='user1' ): ?>
         <li>
           <a href="<?=site_url('admin/manajemen_user'); ?>">Manajemen User</a>
         </li>
@@ -28,6 +28,12 @@
           <a href="<?=site_url('admin/monitoring'); ?>">Monitoring</a>
         </li>
 -->
+          <? endif;?>
+          
+        <? if($this->session->userdata('tipe')=='Manajer'): ?>
+        <li>
+          <a href="<?=site_url('user/manajemen_user/'.$this->session->userdata('group')); ?>">Manajemen User</a>
+        </li>
           <? endif;?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
