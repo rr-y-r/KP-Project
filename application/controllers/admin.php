@@ -74,9 +74,6 @@ class Admin extends CI_Controller
             'userTableData'=>$user_table));
     }
     
-    function getFormKomite(){
-        
-    }
     
     function getUserData(){
         echo json_encode(array('data_user'=>$this->userModel->get_user()));
@@ -249,17 +246,7 @@ class Admin extends CI_Controller
         }
     }
     
-    public function forget()
-	{
-		if (isset($_GET['info'])) {
-               $data['info'] = $_GET['info'];
-              }
-		if (isset($_GET['error'])) {
-              $data['error'] = $_GET['error'];
-              }
-		
-		$this->load->view('login-forget',$data);
-	}
+
     
     private function json_response($successful, $message){
         echo json_encode(array(
