@@ -19,12 +19,22 @@ class User extends CI_Controller
     
     public function index()
     {  
+        
         $data_komite = $this->komite_karir->get_all();
 
         $this->load->view('user', array(
             'datakomite' => $data_komite
         ));
 
+    }
+    
+    function get_komitedata_by_group($group){
+        if($this->session->userdata('tipe')=='Manajer'){
+            echo json_encode(array('data_user'=>$this->komite_karir->get_data_by_group($group)));
+        }else{
+            echo json_encode(array('data_user'=>$this->komite_karir->get_by_NIK($this->session->userdata('nik'))));
+        }
+       
     }
     
     function print_formKomite(){
@@ -137,6 +147,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('posisi', 'posisi', 'required|max_length[254]');
         $this->form_validation->set_rules('alasan', 'alasan', 'required|max_length[254]');
         $this->form_validation->set_rules('rekomendasi', 'rekomendasi', 'required|max_length[254]');
+        $this->form_validation->set_rules('nik_kontributor', 'nik_kontributor', 'max_length[254]');
 
         if ($this->form_validation->run() == FALSE) 
         {
@@ -156,7 +167,8 @@ class User extends CI_Controller
                 'jalur_karir' => $this->input->post('jalur'),
                 'posisi' => $this->input->post('posisi'),
                 'alasan' => $this->input->post('alasan'),
-                'rekomendasi' => $this->input->post('rekomendasi')
+                'rekomendasi' => $this->input->post('rekomendasi'),
+                'nik_kontributor' => $this->input->post('nik_kontributor')
             );
             
             $is_added=$this->komite_karir->insert($data);

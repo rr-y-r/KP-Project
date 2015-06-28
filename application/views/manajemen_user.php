@@ -175,7 +175,17 @@
 function loadTable()
 {
     $('#userDataTable tbody').fadeOut(200).empty();
-    var url = '<?=site_url("user/get_user_data_by_group/".$this->session->userdata('group')); ?>';
+     var url;
+    var userData_type = new String('<?=$this->session->userdata('tipe');?>');
+    if(userData_type=="user1"){
+        var url = '<?=site_url("admin/getUserData"); ?>';
+        }
+    if(userData_type=="Manajer"){
+            var url = '<?=site_url("user/get_user_data_by_group/".$this->session->userdata('group')); ?>';
+        }
+    
+    
+
     $.get(url, function(data){
         var data_user = jQuery.parseJSON(data);
         var data = data_user['data_user'];

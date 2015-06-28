@@ -24,6 +24,15 @@ class Komite_karir extends CI_Model
 
     }
     
+    function get_data_by_group($group){
+        $this->db->select('k.*');
+        $this->db->from('komite_karir k');
+        $this->db->join('user u', 'k.nik_kontributor=u.nik ','left');
+        $this->db->where('u.department',$group);
+        
+        return $this->db->get()->result_array();
+    }
+    
     function getDatabyTipe($userType){
         return $this->db->select('*')
             ->order_by('id')
@@ -35,7 +44,7 @@ class Komite_karir extends CI_Model
     {
         $form = $this->db->select('*')
             ->order_by('id')
-            ->get_where('komite_karir', array('nik' => $nik))
+            ->get_where('komite_karir', array('nik_kontributor' => $nik))
             ->result_array();
 
         return $form;

@@ -81,6 +81,10 @@
                              <label>Rekomendasi Program Pengembangan</label>
                              <input class="form-control" name="rekomendasi" type="text" placeholder="rekomendasi"/>
                         </div>
+                         <div class="form-group hidden">
+                             <label>Rekomendasi Program Pengembangan</label>
+                             <input class="form-control" name="nik_kontributor"  type="text" value="<?=$this->session->userdata('nik');?>"/>
+                        </div>
                         
                     <div id="addSuccess" class="row" style="display: none">
                           <div id="addSuccessMessage" class="alert alert-info text-center"></div>
@@ -112,6 +116,7 @@
                             <th>Alasan Rekomendasi</th>  
                             <th>Rekomendasi</th> 
                             <th>Status</th> 
+                            <th>NIK Kontributor</th> 
                             <th>Tool</th> 
                         </tr> 
                         </thead> 
@@ -348,6 +353,8 @@ $(document).ready(function() {
     });
     
     $("#menu-toggle").click();
+    
+    console.log('<?=$this->session->userdata('tipe');?>');
     
     var i = 1;
     

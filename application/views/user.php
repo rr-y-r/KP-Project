@@ -81,6 +81,10 @@
                              <label>Rekomendasi Program Pengembangan</label>
                              <input class="form-control" name="rekomendasi" type="text" placeholder="rekomendasi"/>
                         </div>
+                         <div class="form-group hidden">
+                             <label>Rekomendasi Program Pengembangan</label>
+                             <input class="form-control" name="nik_kontributor"  type="text" value="<?=$this->session->userdata('nik');?>"/>
+                        </div>
                         
                     <div id="addSuccess" class="row" style="display: none">
                           <div id="addSuccessMessage" class="alert alert-info text-center"></div>
@@ -112,7 +116,9 @@
                             <th>Alasan Rekomendasi</th>  
                             <th>Rekomendasi</th> 
                             <th>Status</th> 
+                            <th>NIK Kontributor</th> 
                             <th>Tool</th> 
+                            
                         </tr> 
                         </thead> 
                         <tbody> 
@@ -193,6 +199,7 @@
                                          <input class="form-control" name="rekomendasi" type="text" placeholder="rekomendasi"
                                                 value="<?=$row['rekomendasi']; ?>"/>
                                     </div>
+                                    
                                     
                                     
                                 <div id="editSuccess" class="row" style="display: none">
@@ -294,16 +301,18 @@
 function loadTable()
 {
     $('#komiteTable tbody').fadeOut(200).empty();
-    var url = '<?=site_url("admin/getData"); ?>';
+    var url = '<?=site_url("user/get_komitedata_by_group/".$this->session->userdata("group")); ?>';
+    console.log(url);
     $.get(url, function(data){
+         
         var data_komite = jQuery.parseJSON(data);
-        var data = data_komite['data_komite'];
-        $.each(data_komite['data_komite'], function (i,d) {
-
+        $.each(data_komite['data_user'], function (i,d) {
+            
             var row='<tr>';
             row+='<tr>';
            
            $.each(d, function(j, e) {
+               
                if(d['status']!==""){
                     row+='<td class="success"><b>'+e+'</b></td>';   
                }else{
@@ -322,7 +331,7 @@ function loadTable()
 function deleteKomite(x)
 {
     var confMsg =  confirm("apakah kamu yakin ingin menghapus data ini ?");
-    var deleteURL = '<?=site_url("admin/deleteDataKomite"); ?>'+'/'+x;
+    var deleteURL = '<?=site_url("user/deleteDataKomite"); ?>'+'/'+x;
      if (confMsg == true)
      {
          console.log(deleteURL);
@@ -356,7 +365,7 @@ $(document).ready(function() {
     $("#tambah").click(function(e) {
         e.preventDefault();
         
-        var url = '<?=site_url("admin/getPejabatData"); ?>';
+        var url = '<?=site_url("user/getPejabatData"); ?>';
         var person ='<select class="form-control assesor'+i+'" name="assesor'+i+'" required>';
         $.get(url, function(data){
         var data_pejabat = jQuery.parseJSON(data);
@@ -393,7 +402,7 @@ $(document).ready(function() {
       $('#addSucess').hide();
       $('#addError').hide();
 
-      var faction = '<?=site_url('admin/insert'); ?>';
+      var faction = '<?=site_url('user/insert'); ?>';
       var fdata = form.serialize();
 
       $.post(faction, fdata, function(rdata) {
@@ -422,7 +431,7 @@ $(document).ready(function() {
       $('#editSucess').hide();
       $('#editError').hide();
 
-      var faction = '<?=site_url('admin/editKomite'); ?>';
+      var faction = '<?=site_url('user/editKomite'); ?>';
       var fdata = form.serialize();
 
       $.post(faction, fdata, function(rdata) {
