@@ -36,7 +36,7 @@ class Admin extends CI_Controller
             'id_komite' => $this->input->post('komite_id')
         ); 
         
-        $data_komite = $this->komite_karir->get_by_id(1);
+        $data_komite = $this->komite_karir->get_by_id($this->input->post('komite_id'));
         
         $temp = $this->input->post('jumlah');
         
@@ -44,6 +44,49 @@ class Admin extends CI_Controller
             
             $data['assesor'.$i] = $this->input->post('assesor'.$i);
             $data['jabatan'.$i] = $this->userModel->getJabatan($this->input->post('assesor'.$i));
+        }
+        
+        $data['flaghats_1'] = "";
+        $data['flaghats_2'] = "";
+        $data['flaghats_3'] = "";
+        $data['flaghats_4'] = "";
+        $data['hasil_1'] = "";
+        $data['hasil_2'] = "";
+        $data['jalur_1'] = "";
+        $data['jalur_2'] = "";
+        $data['jalur_3'] = "";
+        $data['jalur_4'] = "";
+        
+        if($data_komite[0]['hats']=="Strongly_Recommended"){
+            $data['flaghats_1'] = "checked";
+        }
+        elseif($data_komite[0]['hats']=="Recommended"){
+            $data['flaghats_2'] = "checked";
+        }
+        elseif($data_komite[0]['hats']=="Not_recommended"){
+            $data['flaghats_3'] = "checked";
+        }
+        else{
+            $data['flaghats_4'] = "checked";
+        }
+
+        if($data_komite[0]['hasil']=="Promosi"){
+            $data['hasil_1'] = "checked";
+            if($data_komite[0]['jalur_karir']=="Struktural"){
+                $data['jalur_1'] = "checked";
+            }
+            if($data_komite[0]['jalur_karir']=="Fungsional"){
+                $data['jalur_2'] = "checked";
+            }
+        }
+        if($data_komite[0]['hasil']=="Rotasi"){
+            $data['hasil_2'] = "checked";
+            if($data_komite[0]['jalur_karir']=="Struktural"){
+                $data['jalur_3'] = "checked";
+            }
+            if($data_komite[0]['jalur_karir']=="Fungsional"){
+                $data['jalur_4'] = "checked";
+            }
         }
             
         $this->load->view('test_table', array(
@@ -120,6 +163,8 @@ class Admin extends CI_Controller
     function insert(){
         sleep(1);
         $this->load->library('form_validation');
+        $this->form_validation->set_rules('group', 'group');
+        $this->form_validation->set_rules('tanggal', 'tanggal');
         $this->form_validation->set_rules('nik', 'nik', 'required|max_length[254]');
         $this->form_validation->set_rules('nama', 'nama', 'required|max_length[254]');
         $this->form_validation->set_rules('cat_karir', 'cat_karir', 'required|max_length[254]');
@@ -141,6 +186,8 @@ class Admin extends CI_Controller
         {
             
             $data = array(
+                'group' => $this->input->post('group'), 
+                'tanggal' => $this->input->post('tanggal'),
                 'nik' => $this->input->post('nik'), 
                 'nama' => $this->input->post('nama'), 
                 'cat_karir' => $this->input->post('cat_karir'),

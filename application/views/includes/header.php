@@ -21,10 +21,10 @@
     <!-- Squad theme CSS -->
     <link href="<?=base_url('assets/css/style.css'); ?>" rel="stylesheet">
 	<link href="<?=base_url('assets/color/default.css'); ?>" rel="stylesheet">
-    <link href="<?=base_url('assets/css/datepicker.css'); ?>" rel="stylesheet" type="text/css">
+
     <script src="<?=base_url('assets/js/jquery.js'); ?>"></script>
     
     <script src="<?=base_url('assets/js/bootstrap.js'); ?>"></script>
-    
+    <link href="<?=base_url('assets/css/datepicker.css'); ?>" rel="stylesheet" type="text/css"> 
 </head>
     <body>

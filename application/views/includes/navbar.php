@@ -37,7 +37,7 @@
           <? endif;?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="glyphicon glyphicon-th-list" id="menu-toggle"></a></li>
+        <li><a href="#" class="glyphicon glyphicon-th-list menu-toggle" id="menu-toggle"></a></li>
       </ul>
     </nav>
   </div>

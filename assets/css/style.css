@@ -16,6 +16,20 @@ body {
     padding-left: 19px;
 }
 
+#komiteTable{
+    font-size: 12px;
+    margin-left: -25px;
+}
+
+table, td{
+    border: 1px solid #ccc;
+}
+
+th{
+    border: 1px solid #fff;
+    text-align: center;
+}
+
 
 .login{
     background-image:url('../bg.jpg');

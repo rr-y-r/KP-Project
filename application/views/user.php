@@ -4,7 +4,7 @@
 
 <div class="container">
     
-    <div class="content" style="display:none">
+    <div class="content">
 	   <div class="row clearfix">
 
             
@@ -39,22 +39,46 @@
                     
                     <!--END message for showing error/sucess in editing ticket-->
                      <form class="formKomite" role="form" accept-charset="utf-8">
-                        
+                        <div class="form-group">
+                             <label>Group</label>
+                             <select class="form-control" name="group" required>
+                                 <option value=""></option>
+                                 <option value="Area_pamasuka">Area_pamasuka</option>
+                                 <option value="Business_Support_Area_Pamasuka_Group">Business_Support_Area_Pamasuka_Group</option>
+                                 <option value="ICT_network_management_area_pamasuka_Group">ICT network management area pamasuka Group</option>
+                                 <option value="Sales_and_marketing_area_pamasuka_Group">Sales and marketing area pamasuka Group</option>
+                             </select>
+                        </div>
+                        <div class="form-group">
+                             <label>Tanggal</label>
+                             <input class="form-control datepicker" name="tanggal" data-date-format="dd/mm/yyyy"/>
+                        </div>
                         <div class="form-group">
                              <label>NIK</label>
                              <input class="form-control" name="nik" type="text" placeholder="NIK Pegawai" />
                         </div>
+                        
                         <div class="form-group">
                              <label>Nama</label>
                              <input class="form-control" name="nama" type="text" placeholder="nama pegawai"/>
                         </div>
                          <div class="form-group">
                              <label>Kategory karir</label>
-                             <input class="form-control" name="cat_karir" type="text" placeholder="Kategory karir"/>
+                             <select class="form-control" name="cat_karir" required>
+                                 <option value=""></option>
+                                 <option value="Successor">Successor</option>
+                                 <option value="Hipo">Hipo</option>
+                                 <option value="Talent">Talent</option>
+                             </select>
                         </div>
                         <div class="form-group">
                              <label>HATS</label>
-                             <input class="form-control" name="hats" type="text" placeholder="HATS"/>
+                             <select class="form-control" name="hats" required>
+                                 <option value=""></option>
+                                 <option value="Strongly_Recommended">Strongly Recommended</option>
+                                 <option value="Recommended">Recommended</option>
+                                 <option value="Not_recommended">Not recommended</option>
+                             </select>
                         </div>
                          <div class="form-group">
                              <label>Keterangan HATS</label>
@@ -62,11 +86,19 @@
                         </div>
                         <div class="form-group">
                              <label>Hasil</label>
-                             <input class="form-control" name="hasil" type="text" placeholder="hasil"/>
+                             <select class="form-control" name="hasil" required>
+                                 <option value=""></option>
+                                 <option value="Promosi">Promosi</option>
+                                 <option value="Rotasi">Rotasi</option>
+                             </select>
                         </div>
                         <div class="form-group">
                              <label>Jalur Karir</label>
-                             <input class="form-control" name="jalur" type="text" placeholder="Jalur Karir"/>
+                             <select class="form-control" name="jalur" required>
+                                 <option value=""></option>
+                                 <option value="Struktural">Struktural</option>
+                                 <option value="Fungsional">Fungsional</option>
+                             </select>
                         </div>
                         <div class="form-group">
                              <label>Posisi</label>
@@ -105,6 +137,8 @@
                         <thead style="background-color:#FF6666;"> 
                         <tr> 
                             <th>ID</th> 
+                            <th>group</th>
+                            <th>tanggal</th>
                             <th>NIK</th> 
                             <th>Nama</th> 
                             <th>Kategory Karir</th> 
@@ -118,7 +152,6 @@
                             <th>Status</th> 
                             <th>NIK Kontributor</th> 
                             <th>Tool</th> 
-                            
                         </tr> 
                         </thead> 
                         <tbody> 
@@ -146,7 +179,15 @@
                                     </div>
                                     <div class="form-group">
                                          <label>STATUS SK KOMITE KARIR</label>
-                                         <textarea class="form-control" rows="3" name="status" placeholder="Sudah / Belum ditanda-tangan"></textarea> 
+                                         <select class="form-control" name="status" required>
+                                             <option value="">Belum Diapprove</option>
+                                             <option value="Submit_BA_KOMKAR">Submit BA KOMKAR</option>
+                                             <option value="Print_SK">Print SK</option>
+                                             <option value="sirkulasi_tanda_Tangan">sirkulasi tanda Tangan</option>
+                                             <option value="Distribusi_SK">Distribusi SK</option>
+                                             <option value="SK_Diterima">SK Diterima</option>
+                                             <option value="Complete">Complete</option>
+                                         </select>
                                     </div>
                                     <div class="form-group form_nik">
                                          <label>NIK</label>
@@ -201,7 +242,6 @@
                                     </div>
                                     
                                     
-                                    
                                 <div id="editSuccess" class="row" style="display: none">
                                       <div id="editSuccessMessage" class="alert alert-info text-center"></div>
                                 </div>
@@ -240,16 +280,16 @@
                                 <!--END message for showing error/sucess in editing ticket-->
 
                                 <!--BEGIN EDIT ticket form-->
-                                <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>"  target="_blank"  method="post" accept-charset="utf-8">
+                                <form class="formPrint" role="form" action="<?=site_url('user/print_formKomite'); ?>"  target="_blank"  method="post" accept-charset="utf-8">
                                     <div class="form-group hidden">
                                          <label>id komite</label>
                                          <input class="form-control" name="komite_id" type="text" value="<?=$row['id']; ?>"/>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                          <label>Group</label>
                                          <input class="form-control" name="group" type="text" placeholder="nama group"/>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                          <label>Tanggal</label>
                                          <input class="form-control" name="tanggal" type="text" placeholder="contoh : 2015-6-23"/>
                                     </div>
@@ -260,16 +300,16 @@
                                 <div id="editError" class="row" style="display: none">
                                       <div id="editErrorMessage" class="alert alert-danger text-center"></div>
                                 </div>
-                                    <div class="form-group" id="assesor">
+                                    <div class="form-group assesor" id="assesor">
                                          <label class="col-md-12">Jumlah Assesor Penandatangan</label>
                                         <div class="hidden">
-                                         <input type="number" name="jumlah" id="jumlah" class="form-control"/>
+                                         <input type="number" name="jumlah" id="jumlah" class="form-control jumlah"/>
                                         </div>
                                         <div class="col-md-6">
-                                         <button type="button" id="tambah" class="btn btn-success form-control">tambah</button>
+                                         <button type="button" id="tambah" class="btn btn-success form-control tambah">tambah</button>
                                         </div>
                                         <div class="col-md-6">
-                                        <button type="button" id="kurang" class="btn btn-danger form-control">kurang</button>
+                                        <button type="button" id="kurang" class="btn btn-danger form-control kurang">kurang</button>
                                         </div>
                                     </div>
                                     
@@ -295,6 +335,7 @@
     </div>
 </div>
 
+    
 <script src="<?=base_url('assets/js/bootstrap-datepicker.js'); ?>"></script>
 <script>
     
@@ -319,7 +360,13 @@ function loadTable()
                     row+='<td><b>'+e+'</b></td>';
                    }
            })
-            row+='<td><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">&nbsp;HAPUS&nbsp;</button> <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#print_id_'+d['id']+'">&nbsp;&nbsp;PRINT&nbsp;&nbsp;</a> </td>'
+           
+           var tipe_anggota = '<?=$this->session->userdata('tipe'); ?>';
+            if(tipe_anggota=="Anggota"){
+            row+='<td><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">&nbsp;HAPUS&nbsp;</button> <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#print_id_'+d['id']+'">&nbsp;&nbsp;PRINT&nbsp;&nbsp;</a> </td>'
+            }else{
+                row+='<td><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">&nbsp;HAPUS&nbsp;</button> <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#print_id_'+d['id']+'">&nbsp;&nbsp;PRINT&nbsp;&nbsp;</a> </td>'
+            }
 
            row+='</tr>';
            $('#komiteTable tbody').fadeIn(1000).append(row);
@@ -347,7 +394,7 @@ function deleteKomite(x)
     
  $("#menu-toggle").click(function(e) {
     e.preventDefault();
-    $("#wrapper").toggleClass("");
+    $("#wrapper").toggleClass("toggled");
 });
     
 $(document).ready(function() {
@@ -360,39 +407,34 @@ $(document).ready(function() {
     
     var i = 1;
     
+    console.log(i);
     
-    
-    $("#tambah").click(function(e) {
-        e.preventDefault();
+    $(".tambah").click(function(e) {
         
-        var url = '<?=site_url("user/getPejabatData"); ?>';
+        var xyz = '<?=site_url("user/getPejabatData"); ?>';
+        
         var person ='<select class="form-control assesor'+i+'" name="assesor'+i+'" required>';
-        $.get(url, function(data){
-        var data_pejabat = jQuery.parseJSON(data);
+        $.get(xyz, function(data){
+        var data_pejabatx = jQuery.parseJSON(data);
 
-        $.each(data_pejabat['data_pejabat'], function (i,d) {
+        $.each(data_pejabatx['data_pejabat'], function (i,d) {
             person +='<option value="'+d['nama']+'"> '+d['nama']+' - '+d['jabatan']+'</option>';
         })
         person+='</select>';
           i++;
-            $('#assesor').append(person);
-            $('#jumlah').val(i);
+            $('.assesor').append(person);
+            $('.jumlah').val(i);
             
-    });        
-        
-        /*
-        
-        var person ='<select class="form-control assesor'+i+'" name="assesor'+i+'" required><option value="HRD">HRD</option><option value="HMC">HMC</option></select><br>';
-        */
-        
-        
+        });   
         console.log(i);
+        
     });
+    
     $("#kurang").click(function(e) {
         e.preventDefault();
         i--;
         $('.assesor'+i).remove();
-        $('#jumlah').val(i);
+        $('.jumlah').val(i);
         console.log(i);
     });
     

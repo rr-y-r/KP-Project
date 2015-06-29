@@ -32,11 +32,11 @@
                                      <br>
                                  </td>
                                  <td></td><td></td><td></td>
-                                 <td><input type="checkbox" > Strongly Recommended</td>
-                                 <td><input type="checkbox" > Promosi</td>
-                                 <td><input type="checkbox" > Struktural Band
+                                 <td><input type="checkbox" <?=$data_print['flaghats_1'];?>> Strongly Recommended</td>
+                                 <td><input type="checkbox" <?=$data_print['hasil_1'];?>> Promosi</td>
+                                 <td><input type="checkbox" <?=$data_print['jalur_1'];?>> Struktural Band
                                     <br>
-                                     <input type="checkbox" > Fungstionalitas Band
+                                     <input type="checkbox" <?=$data_print['jalur_2'];?>> Fungstionalitas Band
                                  </td>
                              </tr>
                              <tr>
@@ -45,11 +45,11 @@
                                      <br>
                                  </td>
                                  <td></td><td></td><td></td>
-                                 <td><input type="checkbox" > Recommended</td>
-                                 <td><input type="checkbox" > Rotasi</td>
-                                 <td><input type="checkbox" > Struktural
+                                 <td><input type="checkbox" <?=$data_print['flaghats_2'];?>> Recommended</td>
+                                 <td><input type="checkbox" <?=$data_print['hasil_2'];?>> Rotasi</td>
+                                 <td><input type="checkbox" <?=$data_print['jalur_3'];?>> Struktural
                                     <br>
-                                     <input type="checkbox" > Fungstionalitas
+                                     <input type="checkbox" <?=$data_print['jalur_4'];?>> Fungstionalitas
                                  </td>
                              </tr>
                              <tr>
@@ -61,8 +61,8 @@
                                  </td>
                                  <td>nilai</td>
                                  <td>nilai</td>
-                                 <td><input type="checkbox" > not Recommended</td>
-                                 <td colspan="2"><input type="checkbox" > belum direkomendasikan, alasan <br></td>
+                                 <td><input type="checkbox" <?=$data_print['flaghats_3'];?>> not Recommended</td>
+                                 <td colspan="2"><input type="checkbox" <?=$data_print['flaghats_4'];?>> belum direkomendasikan, alasan <br></td>
                              </tr>
                              <tr>
                                  <td>Group

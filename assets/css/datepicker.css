@@ -159,14 +159,16 @@
   background-color: #003399 \9;
 }
 .datepicker td span.old {
-  color: #999999;
+  color: #006dcc;
 }
 .datepicker th.switch {
   width: 145px;
+    color:#006dcc;
 }
 .datepicker th.next,
 .datepicker th.prev {
   font-size: 21px;
+    color:#555;
 }
 .datepicker thead tr:first-child th {
   cursor: pointer;
