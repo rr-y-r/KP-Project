@@ -430,7 +430,7 @@ $(document).ready(function() {
         
     });
     
-    $("#kurang").click(function(e) {
+    $(".kurang").click(function(e) {
         e.preventDefault();
         i--;
         $('.assesor'+i).remove();

@@ -300,16 +300,16 @@
                                 <div id="editError" class="row" style="display: none">
                                       <div id="editErrorMessage" class="alert alert-danger text-center"></div>
                                 </div>
-                                    <div class="form-group" id="assesor">
+                                    <div class="form-group assesor" id="assesor">
                                          <label class="col-md-12">Jumlah Assesor Penandatangan</label>
                                         <div class="hidden">
                                          <input type="number" name="jumlah" id="jumlah" class="form-control"/>
                                         </div>
                                         <div class="col-md-6">
-                                         <button type="button" id="tambah" class="btn btn-success form-control">tambah</button>
+                                         <button type="button" id="tambah" class="btn btn-success tambah form-control">tambah</button>
                                         </div>
                                         <div class="col-md-6">
-                                        <button type="button" id="kurang" class="btn btn-danger form-control">kurang</button>
+                                        <button type="button" id="kurang" class="btn btn-danger kurang form-control">kurang</button>
                                         </div>
                                     </div>
                                     
@@ -403,7 +403,7 @@ $(document).ready(function() {
     
     
     
-    $("#tambah").click(function(e) {
+    $(".tambah").click(function(e) {
         e.preventDefault();
         
         var url = '<?=site_url("admin/getPejabatData"); ?>';
@@ -416,8 +416,8 @@ $(document).ready(function() {
         })
         person+='</select>';
           i++;
-            $('#assesor').append(person);
-            $('#jumlah').val(i);
+            $('.assesor').append(person);
+            $('.jumlah').val(i);
             
     });        
         
@@ -429,11 +429,11 @@ $(document).ready(function() {
         
         console.log(i);
     });
-    $("#kurang").click(function(e) {
+    $(".kurang").click(function(e) {
         e.preventDefault();
         i--;
         $('.assesor'+i).remove();
-        $('#jumlah').val(i);
+        $('.jumlah').val(i);
         console.log(i);
     });
     
