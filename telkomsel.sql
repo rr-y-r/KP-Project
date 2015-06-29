@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: 28 Jun 2015 pada 09.29
+-- Generation Time: 29 Jun 2015 pada 00.27
 -- Versi Server: 5.5.40
 -- PHP Version: 5.4.34
 
@@ -39,11 +39,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('2b9e869354a2eccd390c4ae7be7bc8f2', '::1', 'Mozilla/5.0 (Linux; Android 4.3; Nexus 7 Build/JSS15Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2307.2 Mobile ', 1435508709, 'a:7:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";s:5:"group";s:35:"Network Service Makassar Department";}'),
-('add47bb7002c72f6651e3b7e4b8e9531', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36', 1435508382, 'a:7:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";s:5:"group";s:35:"Network Service Makassar Department";}'),
-('c5a02b2fb22f848db5625d9e5c401dea', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36', 1435508925, 'a:7:{s:9:"user_data";s:0:"";s:8:"username";s:12:"anggota_hmc1";s:2:"id";s:1:"5";s:12:"is_logged_in";b:1;s:4:"tipe";s:7:"Anggota";s:3:"nik";s:5:"12344";s:5:"group";s:3:"HMC";}'),
-('d84db40c23e455a65afabd24d83ea673', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36', 1435508141, 'a:7:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";s:5:"group";s:35:"Network Service Makassar Department";}'),
-('e8d62493ca337732a876f7bfa554b44a', '::1', 'Mozilla/5.0 (Linux; Android 4.3; Nexus 7 Build/JSS15Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2307.2 Mobile ', 1435508211, 'a:7:{s:9:"user_data";s:0:"";s:8:"username";s:5:"user1";s:2:"id";s:1:"1";s:12:"is_logged_in";b:1;s:4:"tipe";s:5:"user1";s:3:"nik";s:5:"76219";s:5:"group";s:35:"Network Service Makassar Department";}');
+('72d2e8240ff2190bc607ec2671764d03', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36', 1435561935, 'a:7:{s:9:"user_data";s:0:"";s:8:"username";s:14:"manajer_hmc123";s:2:"id";s:2:"17";s:12:"is_logged_in";b:1;s:4:"tipe";s:7:"Manajer";s:3:"nik";s:5:"61660";s:5:"group";s:3:"HMC";}');
 
 -- --------------------------------------------------------
 
@@ -53,6 +49,8 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 
 CREATE TABLE IF NOT EXISTS `komite_karir` (
 `id` int(30) NOT NULL,
+  `group` varchar(255) NOT NULL,
+  `tanggal` varchar(255) NOT NULL,
   `nik` int(10) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `cat_karir` varchar(25) NOT NULL,
@@ -65,23 +63,25 @@ CREATE TABLE IF NOT EXISTS `komite_karir` (
   `rekomendasi` varchar(185) NOT NULL,
   `status` varchar(25) NOT NULL,
   `nik_kontributor` int(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `komite_karir`
 --
 
-INSERT INTO `komite_karir` (`id`, `nik`, `nama`, `cat_karir`, `hats`, `ket_hats`, `hasil`, `jalur_karir`, `posisi`, `alasan`, `rekomendasi`, `status`, `nik_kontributor`) VALUES
-(1, 1, 'tess', 'awdad', 'awda', 'awdawd', 'awdawd', 'awdad', 'awdad', '', 'zxczcx', 'diterima', 0),
-(2, 0, '00', '00', '00', '00', '00', '00', '00', '00', '00', '', 0),
-(3, 11, '111', '11', '11', '11', '11', '11', '11', '11', '11', '', 0),
-(4, 12312, 'ijwij', 'ijijwii', 'jiji', 'jij', 'iji', 'jij', 'ij', 'ijij', 'ij', '', 0),
-(5, 11, '11', '11', '11', '11', '11', '11', '11', '11', '11', '', 0),
-(6, 123456, 'tes', 'test', 'tes', 'tes', 'tes', 'tes', 'tes', '', 'tes', 'sudah', 76219),
-(7, 123, '123', '123', '123', '123', '123', '123', '123', '123', '123', '', 1234),
-(8, 11030, '654', '654', '654', '654', '654', '654', '654', '654', '654', '', 61660),
-(9, 12345, 'nama', 'kategory', 'hats', 'keterangan hats', 'hasil', 'jalur', 'posisi', 'alasan', 'rekomenfasi', '', 61660),
-(10, 123, '12344', '44', '44', '44', '44', '44', '44', '44', '44', '', 12344);
+INSERT INTO `komite_karir` (`id`, `group`, `tanggal`, `nik`, `nama`, `cat_karir`, `hats`, `ket_hats`, `hasil`, `jalur_karir`, `posisi`, `alasan`, `rekomendasi`, `status`, `nik_kontributor`) VALUES
+(1, '', '', 1, 'tess', 'awdad', 'awda', 'awdawd', 'awdawd', 'awdad', 'awdad', '', 'zxczcx', 'diterima', 0),
+(2, '', '', 0, '00', '00', '00', '00', '00', '00', '00', '00', '00', '', 0),
+(3, '', '', 11, '111', '11', '11', '11', '11', '11', '11', '11', '11', '', 0),
+(4, '', '', 12312, 'ijwij', 'ijijwii', 'jiji', 'jij', 'iji', 'jij', 'ij', 'ijij', 'ij', '', 0),
+(5, '', '', 11, '11', '11', '11', '11', '11', '11', '11', '11', '11', '', 0),
+(6, '', '', 123456, 'tes', 'test', 'tes', 'tes', 'tes', 'tes', 'tes', '', 'tes', 'sudah', 76219),
+(7, '', '', 123, '123', '123', '123', '123', '123', '123', '123', '123', '123', '', 1234),
+(8, '', '', 11030, '654', '654', '654', '654', '654', '654', '654', '654', '654', '', 61660),
+(9, '', '', 12345, 'nama', 'kategory', 'hats', 'keterangan hats', 'hasil', 'jalur', 'posisi', 'alasan', 'rekomenfasi', '', 61660),
+(10, '', '', 123, '12344', '44', '44', '44', '44', '44', '44', '44', '44', '', 12344),
+(11, 'Area_pamasuka', '2015-05-13', 0, 'tes', 'Successor', 'Strongly_Recommended', 'tes', 'Promosi', 'Struktural', 'tes', '', 'tes', 'Submit_BA_KOMKAR', 76219),
+(12, '', '', 111, '11', 'Successor', 'Recommended', '111', 'Promosi', 'Fungsional', '11', '11', '11', '', 61660);
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `komite_karir`
 --
 ALTER TABLE `komite_karir`
-MODIFY `id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `user`
 --
