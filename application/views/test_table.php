@@ -1,7 +1,7 @@
 <? $this->load->view('includes/header');?>
 
 <div class="container">
-
+<?=$data_print['jumlah'];?>
 	   <div class="row">
 
                 <button class="pull-right btn btn-success print-btn" onclick="return printBtn()">print</button>

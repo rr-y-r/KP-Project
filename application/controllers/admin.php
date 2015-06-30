@@ -29,12 +29,8 @@ class Admin extends CI_Controller
     
     function print_formKomite(){
         
-        $data = array(
-            'group' => $this->input->post('group'),
-            'tanggal' => $this->input->post('tanggal'),
-            'jumlah' => $this->input->post('jumlah'),
-            'id_komite' => $this->input->post('komite_id')
-        ); 
+        $data['jumlah'] = $this->input->post('jumlah');
+
         
         $data_komite = $this->komite_karir->get_by_id($this->input->post('komite_id'));
         

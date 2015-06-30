@@ -280,41 +280,29 @@
                                 <!--END message for showing error/sucess in editing ticket-->
 
                                 <!--BEGIN EDIT ticket form-->
-                                <form class="formPrint" role="form" action="<?=site_url('admin/print_formKomite'); ?>"  target="_blank"  method="post" accept-charset="utf-8">
+                                <form class="formPrint" id="formPrint" role="form" action="<?=site_url('admin/print_formKomite/'); ?>"  target="_blank"  method="post" accept-charset="utf-8">
                                     <div class="form-group hidden">
                                          <label>id komite</label>
                                          <input class="form-control" name="komite_id" type="text" value="<?=$row['id']; ?>"/>
                                     </div>
-                                    <div class="form-group hidden">
-                                         <label>Group</label>
-                                         <input class="form-control" name="group" type="text" placeholder="nama group"/>
-                                    </div>
-                                    <div class="form-group hidden">
-                                         <label>Tanggal</label>
-                                         <input class="form-control" name="tanggal" type="text" placeholder="contoh : 2015-6-23"/>
-                                    </div>
-                                    
-                                <div id="editSuccess" class="row" style="display: none">
-                                      <div id="editSuccessMessage" class="alert alert-info text-center"></div>
-                                </div>
-                                <div id="editError" class="row" style="display: none">
-                                      <div id="editErrorMessage" class="alert alert-danger text-center"></div>
-                                </div>
-                                    <div class="form-group assesor" id="assesor">
+
+
+                                    <div class="form-group jumlah_tanda_tangan" id="jumlah_tanda_tangan<?=$row['id']; ?>">
+                                        
                                          <label class="col-md-12">Jumlah Assesor Penandatangan</label>
-                                        <div class="hidden">
-                                         <input type="number" name="jumlah" id="jumlah" class="form-control"/>
+                                        <div class="form-group hidden">
+                                         <input type="number" name="jumlah" id="jumlah" class="form-control jumlah"/>
                                         </div>
                                         <div class="col-md-6">
-                                         <button type="button" id="tambah" class="btn btn-success tambah form-control">tambah</button>
+                                         <button type="button" id="tambah" value="<?=$row['id']; ?>" class="btn btn-success tambah form-control">tambah</button>
                                         </div>
                                         <div class="col-md-6">
                                         <button type="button" id="kurang" class="btn btn-danger kurang form-control">kurang</button>
                                         </div>
                                     </div>
                                     
-                                    
-                                <button type="submit" id="formSubmit-btn" class="btn btn-success btn-large pull-right">Submit</button>
+                                    <div class="data-tanda-tangan"></div>
+                                <button type="submit" id="formPrintSubmit-btn" class="btn btn-success btn-large pull-right">Submit</button>
                                 </form>
                                 <!--END EDIT Ticket form-->
                               </div>
@@ -357,7 +345,7 @@ function loadTable()
                     row+='<td><b>'+e+'</b></td>';
                    }
            })
-            row+='<td><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">&nbsp;HAPUS&nbsp;</button> <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#print_id_'+d['id']+'">&nbsp;&nbsp;PRINT&nbsp;&nbsp;</a> </td>'
+            row+='<td><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#editKomiteModal'+d['id']+'">UPDATE</button><button class="btn btn-sm btn-danger delete" name="id" value="'+d['id']+'" onclick="return deleteKomite('+d['id']+')">&nbsp;HAPUS&nbsp;</button> <button class="btn btn-sm btn-info print_btn" id="print_btn" data-toggle="modal" data-target="#print_id_'+d['id']+'">&nbsp;&nbsp;PRINT&nbsp;&nbsp;</a> </td>'
 
            row+='</tr>';
            $('#komiteTable tbody').fadeIn(1000).append(row);
@@ -400,11 +388,12 @@ $(document).ready(function() {
     console.log('<?=$this->session->userdata('tipe');?>');
     
     var i = 1;
-    
-    
+
     
     $(".tambah").click(function(e) {
-        e.preventDefault();
+        console.log( 'val ->'+ $(this).val());
+        
+        var data_print_id = $(this).val();
         
         var url = '<?=site_url("admin/getPejabatData"); ?>';
         var person ='<select class="form-control assesor'+i+'" name="assesor'+i+'" required>';
@@ -416,7 +405,7 @@ $(document).ready(function() {
         })
         person+='</select>';
           i++;
-            $('.assesor').append(person);
+            $('.data-tanda-tangan').append(person);
             $('.jumlah').val(i);
             
     });        
