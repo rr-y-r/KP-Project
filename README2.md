@@ -1,4 +1,4 @@
-# KP-Project
+# KP-Project - Sistem Informasi
 information system using PHP, with codeigniter as framework
 
 tipe user ada 2 :
